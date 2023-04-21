@@ -1,11 +1,3 @@
 # An022.github.io
 
-<!DOCTYPE html>
-<html>
-<body>
-
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
-
-</body>
-</html>
+A personal website that created by using online tutorials and free CSS templates(https://www.free-css.com/free-css-templates)
