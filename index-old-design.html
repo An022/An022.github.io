@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="An Lee - Software Engineer | Technology Enthusiast">
+    <meta name="author" content="An Lee">
+    <title>An Lee - Personal Website</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e293b',
+                        accent: '#06b6d4',
+                        cold: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'bounce-slow': 'bounce 2s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS for additional styling -->
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0ea5e9 0%, #1e40af 50%, #1e293b 100%);
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(14, 165, 233, 0.1), 0 10px 10px -5px rgba(14, 165, 233, 0.04);
+        }
+        .cold-gradient {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+        }
+        .cold-gradient-dark {
+            background: linear-gradient(135deg, #1e40af 0%, #1e293b 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header Section -->
+    <header class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-20 h-20 border-2 border-white rounded-full"></div>
+            <div class="absolute top-32 right-20 w-16 h-16 border-2 border-white rounded-full"></div>
+            <div class="absolute bottom-20 left-1/4 w-12 h-12 border-2 border-white rounded-full"></div>
+            <div class="absolute bottom-32 right-1/3 w-24 h-24 border-2 border-white rounded-full"></div>
+        </div>
+        
+        <!-- Social Icons -->
+        <div class="absolute top-8 right-8 flex space-x-4 z-10">
+            <a href="mailto:leeans222@gmail.com" class="text-white hover:text-yellow-300 transition-colors duration-300">
+                <i class="fas fa-envelope text-xl"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/an222/" target="_blank" class="text-white hover:text-blue-300 transition-colors duration-300">
+                <i class="fab fa-linkedin text-xl"></i>
+            </a>
+            <a href="https://github.com/An022" target="_blank" class="text-white hover:text-gray-300 transition-colors duration-300">
+                <i class="fab fa-github text-xl"></i>
+            </a>
+            <a href="https://www.facebook.com/an.lee.0222" target="_blank" class="text-white hover:text-blue-400 transition-colors duration-300">
+                <i class="fab fa-facebook text-xl"></i>
+            </a>
+            <a href="https://www.instagram.com/lee_an222/" target="_blank" class="text-white hover:text-pink-300 transition-colors duration-300">
+                <i class="fab fa-instagram text-xl"></i>
+            </a>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="text-center text-white z-10 animate-fade-in">
+            <div class="mb-6">
+                <h4 class="text-xl md:text-2xl font-light mb-4 animate-slide-up">Hello, I am</h4>
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 animate-slide-up" style="animation-delay: 0.2s;">An Lee</h1>
+                <h6 class="text-lg md:text-xl font-light animate-slide-up" style="animation-delay: 0.4s;">
+                    Software Engineer | Technology Enthusiast
+                </h6>
+            </div>
+            
+            <div class="mt-8 animate-slide-up" style="animation-delay: 0.6s;">
+                <a href="assets/files/An-Lee-CV.pdf" download="An-Lee_resume" target="_blank"
+                   class="inline-flex items-center px-8 py-4 bg-white text-gray-800 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover-lift">
+                    <i class="fas fa-download mr-3"></i>
+                    Download Resume
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+            <i class="fas fa-chevron-down text-white text-2xl"></i>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="assets/imgs/avatar.jpg" alt="An Lee" class="w-10 h-10 rounded-full object-cover">
+                    <div>
+                        <h5 class="font-bold text-gray-800">An Lee 🌱</h5>
+                        <div class="text-xs text-gray-600">Software Engineer</div>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-primary transition-colors duration-300">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-primary transition-colors duration-300">About</a>
+                    <a href="#resume" class="nav-link text-gray-700 hover:text-primary transition-colors duration-300">Resume</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-primary transition-colors duration-300">Projects</a>
+                    <a href="#snapshots" class="nav-link text-gray-700 hover:text-primary transition-colors duration-300">Snapshots</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-md text-gray-700 hover:text-primary focus:outline-none" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
+                    <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-primary">Home</a>
+                    <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-primary">About</a>
+                    <a href="#resume" class="block px-3 py-2 text-gray-700 hover:text-primary">Resume</a>
+                    <a href="#projects" class="block px-3 py-2 text-gray-700 hover:text-primary">Projects</a>
+                    <a href="#snapshots" class="block px-3 py-2 text-gray-700 hover:text-primary">Snapshots</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <!-- Who am I -->
+                <div class="lg:col-span-1">
+                    <div class="cold-gradient p-8 rounded-2xl text-white hover-lift">
+                        <h3 class="text-2xl font-bold mb-6">Who am I?</h3>
+                        <div class="w-16 h-1 bg-white mb-6"></div>
+                        <h6 class="text-lg font-semibold mb-4">From Auditor to Computer Scientist: Pursuing a Passion for Healthcare and Data</h6>
+                        <p class="text-gray-100 leading-relaxed mb-6">
+                            I'm An Lee from Taiwan, and I've transitioned from a 6-year career as an auditor at PwC to graduate with a degree in Computer Science from NYU. I specialize in Python, API integration, and backend development. I've used Python for automating data retrieval at Mamon11 and worked on web development and database management at IvorySquare. My passion lies in the industry of healthcare, data, and technology, where I'm eager to make a meaningful impact.
+                        </p>
+                        <a href="assets/files/An-Lee-CV.pdf" download="An-Lee_CV" target="_blank"
+                           class="inline-flex items-center px-6 py-3 bg-white text-primary rounded-full font-semibold hover:bg-gray-100 transition-all duration-300">
+                            <i class="fas fa-download mr-2"></i>
+                            Download My CV
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- My Expertise -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover-lift">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800">My Expertise</h3>
+                        <div class="w-16 h-1 bg-primary mb-6"></div>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-laptop-code text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h6 class="font-semibold text-gray-800 mb-2">Back-end Development</h6>
+                                    <p class="text-gray-600 text-sm">Python | APIs | Database</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-chart-bar text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h6 class="font-semibold text-gray-800 mb-2">Data Analysis</h6>
+                                    <p class="text-gray-600 text-sm">Data Modeling | Financial/Fraud Analysis | Data Interpretation</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-tasks text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h6 class="font-semibold text-gray-800 mb-2">Project Management</h6>
+                                    <p class="text-gray-600 text-sm">Planning | Execution | Team Coordination</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Personal Info -->
+                <div class="lg:col-span-1">
+                    <div class="bg-gray-50 p-8 rounded-2xl hover-lift">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800">Personal Info</h3>
+                        <div class="w-16 h-1 bg-primary mb-6"></div>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-birthday-cake text-primary"></i>
+                                <span class="text-gray-700">Birthdate: FEB/22</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-envelope text-primary"></i>
+                                <span class="text-gray-700">leeans222@gmail.com</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-phone text-primary"></i>
+                                <span class="text-gray-700">(+1) 347-656-5181</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fab fa-line text-primary"></i>
+                                <span class="text-gray-700">0918000289</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fab fa-weixin text-primary"></i>
+                                <span class="text-gray-700">lee_an222</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex space-x-4">
+                            <a href="mailto:leeans222@gmail.com" class="text-gray-600 hover:text-primary transition-colors duration-300">
+                                <i class="fab fa-google text-xl"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/an-lee-an222/" target="_blank" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="https://github.com/An022" target="_blank" class="text-gray-600 hover:text-gray-800 transition-colors duration-300">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="https://www.facebook.com/an.lee.0222" target="_blank" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+                                <i class="fab fa-facebook text-xl"></i>
+                            </a>
+                            <a href="https://www.instagram.com/lee_an222/" target="_blank" class="text-gray-600 hover:text-pink-600 transition-colors duration-300">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    My <span class="text-primary">Resume</span>
+                </h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Work Experience -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 hover-lift">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-briefcase text-primary text-xl"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-gray-800">Work Experience</h4>
+                        </div>
+                        <div class="w-16 h-1 bg-primary mb-6"></div>
+                        
+                        <div class="space-y-8">
+                            <!-- Software Developer Intern -->
+                            <div class="border-l-4 border-primary pl-6">
+                                <h6 class="text-lg font-semibold text-primary mb-2">Software Developer Intern</h6>
+                                <p class="text-gray-600 mb-3">IvorySquare | 2023/07 - Present</p>
+                                <ul class="text-gray-700 space-y-2 text-sm">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-primary mr-2 mt-1 text-xs"></i>
+                                        Utilizing Java, SpringBoot, and OPEN API to contribute to web development projects, enhancing functionality and user experience
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-primary mr-2 mt-1 text-xs"></i>
+                                        Managing Cassandra databases through Java automation, optimizing data operations, and ensuring efficient performance for AWS keyspaces
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Back-end Developer Intern -->
+                            <div class="border-l-4 border-gray-300 pl-6">
+                                <h6 class="text-lg font-semibold text-gray-800 mb-2">Back-end Developer Intern</h6>
+                                <p class="text-gray-600 mb-3">Mamon11 | 2022/09 - 2022/12</p>
+                                <ul class="text-gray-700 space-y-2 text-sm">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-primary mr-2 mt-1 text-xs"></i>
+                                        Developed Python script to retrieve customer activity and sales data through Facebook, Instagram, TikTok, Criteo, and Shopify APIs, transforming JSON files to CSV for analysis and reporting
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-primary mr-2 mt-1 text-xs"></i>
+                                        Created and customized an automated data synchronization pipeline between Azure Database for PostgreSQL and Google Data Studio for customizable reports and dashboards
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-primary mr-2 mt-1 text-xs"></i>
+                                        Collaborated with frontend and data developers to design and maintain user-friendly data management web applications
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Senior Associate Auditor -->
+                            <div class="border-l-4 border-gray-300 pl-6">
+                                <h6 class="text-lg font-semibold text-gray-800 mb-2">Senior Associate Auditor</h6>
+                                <p class="text-gray-600 mb-3">PricewaterhouseCoopers (PwC) | 2015/09 - 2021/07</p>
+                                <ul class="text-gray-700 space-y-2 text-sm">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-primary mr-2 mt-1 text-xs"></i>
+                                        Led the audit department's digitalization project "Digital Pilot Team", developed standard operating procedures
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-primary mr-2 mt-1 text-xs"></i>
+                                        Executed over 130 projects, analyzed and evaluated over 900 key clients' financial/operating data with excel
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-primary mr-2 mt-1 text-xs"></i>
+                                        Managed over 30 audit team members (accumulated) and collaborate with 9 different teams across 4 departments
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Education -->
+                <div class="lg:col-span-4">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 hover-lift">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-graduation-cap text-primary text-xl"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-gray-800">Education</h4>
+                        </div>
+                        <div class="w-16 h-1 bg-primary mb-6"></div>
+                        
+                        <div class="space-y-8">
+                            <!-- NYU -->
+                            <div class="border-l-4 border-primary pl-6">
+                                <h6 class="text-lg font-semibold text-primary mb-2">New York University</h6>
+                                <p class="text-gray-600 mb-1">Courant, MS in Computer Science</p>
+                                <p class="text-gray-500 text-sm mb-4">2021/09 - 2023/05</p>
+                                <div class="text-gray-700 text-sm">
+                                    <p class="font-semibold mb-2">Key Courses:</p>
+                                    <ul class="space-y-1">
+                                        <li>• Fundamental Algorithm</li>
+                                        <li>• Programming Languages</li>
+                                        <li>• Advanced Database System</li>
+                                        <li>• Realtime and Big Data Analytics</li>
+                                        <li>• Predictive Analytics</li>
+                                        <li>• Operating Systems</li>
+                                        <li>• Multicore Processors</li>
+                                        <li>• Applied Cryptography & Network Security</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- National Taipei University -->
+                            <div class="border-l-4 border-gray-300 pl-6">
+                                <h6 class="text-lg font-semibold text-gray-800 mb-2">National Taipei University</h6>
+                                <p class="text-gray-600 mb-1">Business school, Bachelor of Accounting</p>
+                                <p class="text-gray-500 text-sm mb-4">2011/09 - 2015/06</p>
+                                <div class="text-gray-700 text-sm">
+                                    <p class="font-semibold mb-2">Key Courses:</p>
+                                    <ul class="space-y-1">
+                                        <li>• Financial Statement Analysis</li>
+                                        <li>• Security Analysis</li>
+                                        <li>• Accounting Package Software</li>
+                                        <li>• Accounting Information Systems</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills -->
+                <div class="lg:col-span-3">
+                    <div class="space-y-8">
+                        <!-- Programming/Tools -->
+                        <div class="bg-white rounded-2xl shadow-lg p-8 hover-lift">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-code text-primary text-xl"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-gray-800">Programming/Tools</h4>
+                            </div>
+                            <div class="w-16 h-1 bg-primary mb-6"></div>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">Python</span>
+                                        <span class="text-sm text-gray-500">90%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">C++</span>
+                                        <span class="text-sm text-gray-500">60%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">Java</span>
+                                        <span class="text-sm text-gray-500">50%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">APIs</span>
+                                        <span class="text-sm text-gray-500">70%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">SQL</span>
+                                        <span class="text-sm text-gray-500">90%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">Cassandra</span>
+                                        <span class="text-sm text-gray-500">70%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">AWS Keyspaces</span>
+                                        <span class="text-sm text-gray-500">70%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">Hadoop</span>
+                                        <span class="text-sm text-gray-500">50%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">Hive</span>
+                                        <span class="text-sm text-gray-500">50%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">HTML & CSS</span>
+                                        <span class="text-sm text-gray-500">70%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Languages -->
+                        <div class="bg-white rounded-2xl shadow-lg p-8 hover-lift">
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-language text-primary text-xl"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-gray-800">Languages</h4>
+                            </div>
+                            <div class="w-16 h-1 bg-primary mb-6"></div>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">English</span>
+                                        <span class="text-sm text-gray-500">80%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-gray-700">Mandarin</span>
+                                        <span class="text-sm text-gray-500">100%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-primary h-2 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    My <span class="text-primary">Projects</span>
+                </h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Default Prediction -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                    <div class="p-6 cold-gradient">
+                        <i class="fas fa-credit-card text-white text-3xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h5 class="text-xl font-bold text-gray-800 mb-3">Default Prediction</h5>
+                        <p class="text-primary text-sm font-semibold mb-4">Python | Machine learning | Kaggle</p>
+                        <p class="text-gray-700 text-sm leading-relaxed mb-6">
+                            Credit cards are crucial in the financial sector, but banks have faced higher default rates due to increased usage. Data analytics can provide solutions for managing credit risks.
+                        </p>
+                        <div class="space-y-2">
+                            <a href="https://github.com/An022/Default-Prediction" target="_blank" 
+                               class="block text-primary hover:text-blue-600 text-sm transition-colors duration-300">
+                                <i class="fas fa-code mr-2"></i>Code
+                            </a>
+                            <a href="https://github.com/An022/Default-Prediction/tree/main/report" target="_blank" 
+                               class="block text-primary hover:text-blue-600 text-sm transition-colors duration-300">
+                                <i class="fas fa-file-pdf mr-2"></i>Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Imitate Operating Systems -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                    <div class="p-6 cold-gradient">
+                        <i class="fas fa-cogs text-white text-3xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h5 class="text-xl font-bold text-gray-800 mb-3">Imitate Operating Systems</h5>
+                        <p class="text-primary text-sm font-semibold mb-4">C++ | Operating Systems</p>
+                        <p class="text-gray-700 text-sm leading-relaxed mb-6">
+                            The Imitate Operating Systems project aimed to simulate the functionality of an operating system in various aspects.
+                        </p>
+                        <div class="space-y-2">
+                            <a href="https://github.com/An022/Linker" target="_blank" 
+                               class="block text-primary hover:text-blue-600 text-sm transition-colors duration-300">
+                                <i class="fas fa-link mr-2"></i>Linker
+                            </a>
+                            <a href="https://github.com/An022/Scheduler" target="_blank" 
+                               class="block text-primary hover:text-blue-600 text-sm transition-colors duration-300">
+                                <i class="fas fa-clock mr-2"></i>Scheduler
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image Processing -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                    <div class="p-6 cold-gradient">
+                        <i class="fas fa-images text-white text-3xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h5 class="text-xl font-bold text-gray-800 mb-3">Image Processing</h5>
+                        <p class="text-primary text-sm font-semibold mb-4">Python | Image Manipulation</p>
+                        <p class="text-gray-700 text-sm leading-relaxed mb-6">
+                            The project consisting of six components that manipulate images, including pixel erasing, mirroring, blurring, green screen removal.
+                        </p>
+                        <div class="space-y-2">
+                            <a href="https://github.com/An022/image_processing/tree/main/01_photoshop" target="_blank" 
+                               class="block text-primary hover:text-blue-600 text-sm transition-colors duration-300">
+                                <i class="fas fa-paint-brush mr-2"></i>Mini Photoshop
+                            </a>
+                            <a href="https://github.com/An022/image_processing/tree/main/02_mirror_lake" target="_blank" 
+                               class="block text-primary hover:text-blue-600 text-sm transition-colors duration-300">
+                                <i class="fas fa-mirror mr-2"></i>Mirror Lake
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Smarter Transit -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                    <div class="p-6 cold-gradient">
+                        <i class="fas fa-bus text-white text-3xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h5 class="text-xl font-bold text-gray-800 mb-3">Smarter Transit</h5>
+                        <p class="text-primary text-sm font-semibold mb-4">Hadoop | Hive | Java | Real-time System | Tableau</p>
+                        <p class="text-gray-700 text-sm leading-relaxed mb-6">
+                            This report examines the relationship between weather, transit, and crime in New York City.
+                        </p>
+                        <div class="space-y-2">
+                            <a href="https://github.com/An022/smarter_transit" target="_blank" 
+                               class="block text-primary hover:text-blue-600 text-sm transition-colors duration-300">
+                                <i class="fas fa-code mr-2"></i>Code
+                            </a>
+                            <a href="https://github.com/An022/smarter_transit/blob/main/Smarter_Transit_report.pdf" target="_blank" 
+                               class="block text-primary hover:text-blue-600 text-sm transition-colors duration-300">
+                                <i class="fas fa-file-pdf mr-2"></i>Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Breakout -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                    <div class="p-6 cold-gradient">
+                        <i class="fas fa-gamepad text-white text-3xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h5 class="text-xl font-bold text-gray-800 mb-3">Breakout</h5>
+                        <p class="text-primary text-sm font-semibold mb-4">Python | Event-driven & Object-oriented</p>
+                        <p class="text-gray-700 text-sm leading-relaxed mb-6">
+                            This project involves building the classic arcade game of Breakout using Python and various programming concepts.
+                        </p>
+                        <div class="space-y-2">
+                            <a href="https://github.com/An022/event-driven-object-oriented" target="_blank" 
+                               class="block text-primary hover:text-blue-600 text-sm transition-colors duration-300">
+                                <i class="fas fa-gamepad mr-2"></i>Breakout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Miscellaneous -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                    <div class="p-6 cold-gradient">
+                        <i class="fas fa-archive text-white text-3xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h5 class="text-xl font-bold text-gray-800 mb-3">Miscellaneous</h5>
+                        <p class="text-primary text-sm font-semibold mb-4">Python | Data Structure | String Manipulation</p>
+                        <p class="text-gray-700 text-sm leading-relaxed mb-6">
+                            Miscellaneous contains 5 projects, with "popular baby names" displaying US baby name trends from 1900 to 2010.
+                        </p>
+                        <div class="space-y-2">
+                            <a href="https://github.com/An022/data_strcture" target="_blank" 
+                               class="block text-primary hover:text-blue-600 text-sm transition-colors duration-300">
+                                <i class="fas fa-baby mr-2"></i>Popular Baby Names
+                            </a>
+                            <a href="https://github.com/An022/manipulating_string/blob/main/01_complement_DNA/complement_DNA.py" target="_blank" 
+                               class="block text-primary hover:text-blue-600 text-sm transition-colors duration-300">
+                                <i class="fas fa-dna mr-2"></i>Complement DNA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Snapshots Section -->
+    <section id="snapshots" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">
+                    Life <span class="text-primary">Snapshots</span>
+                </h1>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active px-6 py-3 rounded-full bg-primary text-white font-semibold transition-all duration-300" data-filter=".new">
+                    Myself
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-primary hover:text-white transition-all duration-300" data-filter=".mun">
+                    WorldMUN
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-primary hover:text-white transition-all duration-300" data-filter=".exchange">
+                    Volunteer
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-primary hover:text-white transition-all duration-300" data-filter=".travel">
+                    Travel
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-primary hover:text-white transition-all duration-300" data-filter=".sports">
+                    Sports
+                </button>
+            </div>
+            
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Myself -->
+                <div class="portfolio-item new col-span-1 md:col-span-2 lg:col-span-1">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                        <img src="assets/imgs/me-02.jpg" alt="Little An" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h6 class="text-lg font-bold text-gray-800 mb-2">Little An</h6>
+                            <p class="text-gray-600 text-sm">
+                                When I was four years old, I was mischievous and loved to play golf. One time, I even swung the club so hard that I broke a window at home.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item new col-span-1 md:col-span-2 lg:col-span-2">
+                    <div class="bg-white rounded-2xl shadow-lg p-8 hover-lift">
+                        <h5 class="text-2xl font-bold text-gray-800 mb-4">A little more about me</h5>
+                        <div class="w-16 h-1 bg-primary mb-6"></div>
+                        <p class="text-gray-700 leading-relaxed">
+                            Hi! My name is An and I am from Taiwan. As a little girl, I was always a bit different from other girls in my culture. Instead of playing with dolls or dress-up, I loved to play with robots and Lego. I had a passion for creating new things and building them from the ground up. However, my mother was worried about my interests since I was only four years old.
+                            <br><br>
+                            Despite her concerns, I pursued my interests and eventually graduated from National Taipei University with a Bachelor of Accounting. Becoming an auditor allowed me to pick up knowledge quickly and gain experience in financial analysis. After acquiring these skills, I decided to chase my dream of becoming a software engineer. This career choice allowed me to explore my interests and build things creatively.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- WorldMUN -->
+                <div class="portfolio-item mun hidden">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                        <img src="assets/imgs/wmun-02.png" alt="Releasing Sky Lanterns" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h6 class="text-lg font-bold text-gray-800 mb-2">Releasing Sky Lanterns</h6>
+                            <p class="text-gray-600 text-sm">
+                                This is a prayer event before attending WMUN. We released sky lanterns in Pingxi, Taiwan, hoping for a successful participation in WMUN.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item mun hidden">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                        <img src="assets/imgs/wmun-01.png" alt="Harvard WorldMUN" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h6 class="text-lg font-bold text-gray-800 mb-2">Harvard World Model United Nations in Vancouver</h6>
+                            <p class="text-gray-600 text-sm">
+                                Participated in an international Model UN conference at Harvard WorldMUN and represented NTPU in Vancouver.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item mun hidden">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                        <img src="assets/imgs/wmun-03.png" alt="WMUN After-party" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h6 class="text-lg font-bold text-gray-800 mb-2">WMUN After-party</h6>
+                            <p class="text-gray-600 text-sm">
+                                My colleagues and I attended the WMUN after-party, and in the middle of the dance floor, I was the first to hoist our national flag in celebration of the success of the event.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Travel -->
+                <div class="portfolio-item travel hidden">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                        <img src="assets/imgs/travel-03.png" alt="New Zealand" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h6 class="text-lg font-bold text-gray-800 mb-2">New Zealand</h6>
+                            <p class="text-gray-600 text-sm">
+                                We visited the glaciers in New Zealand to explore their magnificent formations, and it was our first time experiencing such a breathtaking natural landscape.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item travel hidden">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                        <img src="assets/imgs/travel-05.png" alt="Vancouver, Canada" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h6 class="text-lg font-bold text-gray-800 mb-2">Vancouver, Canada</h6>
+                            <p class="text-gray-600 text-sm">
+                                In Vancouver's Capilano Suspension Bridge Park, I immersed myself in the relaxing aroma of nature and braved the super shaky suspension bridge.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item travel hidden">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                        <img src="assets/imgs/travel-01.png" alt="Sabah, Malaysia" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h6 class="text-lg font-bold text-gray-800 mb-2">Sabah, Malaysia</h6>
+                            <p class="text-gray-600 text-sm">
+                                My friends and I went to an offshore island in Sabah, Malaysia to enjoy the peaceful and comfortable island life together.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sports -->
+                <div class="portfolio-item sports hidden">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                        <img src="assets/imgs/sports-01.png" alt="Volleyball Team" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h6 class="text-lg font-bold text-gray-800 mb-2">Volleyball Team</h6>
+                            <p class="text-gray-600 text-sm">
+                                Playing volleyball is a great sport that involves strategy, technique, and endurance. I love standing shoulder to shoulder with my teammates on the court.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item sports hidden">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                        <img src="assets/imgs/sports-02.png" alt="Skiing" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h6 class="text-lg font-bold text-gray-800 mb-2">Skiing</h6>
+                            <p class="text-gray-600 text-sm">
+                                Skiing is truly a challenging sport that unfortunately isn't readily available in Taiwan. However, after coming to the United States and experiencing skiing firsthand, I have grown to love it.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item sports hidden">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-lift">
+                        <img src="assets/imgs/sports-03.png" alt="Mountain Climbing" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h6 class="text-lg font-bold text-gray-800 mb-2">Mountain Climbing</h6>
+                            <p class="text-gray-600 text-sm">
+                                I always go mountain climbing whenever I have some spare time. Connecting with nature is the best way to escape the urban environment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex justify-center space-x-6 mb-6">
+                    <a href="mailto:leeans222@gmail.com" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-google text-2xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/an-lee-an222/" target="_blank" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="https://github.com/An022" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="https://www.facebook.com/an.lee.0222" target="_blank" class="text-gray-400 hover:text-blue-500 transition-colors duration-300">
+                        <i class="fab fa-facebook text-2xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/lee_an222/" target="_blank" class="text-gray-400 hover:text-pink-500 transition-colors duration-300">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                </div>
+                <p class="text-gray-400 text-sm">
+                    &copy; <script>document.write(new Date().getFullYear())</script> An Lee. All rights reserved.
+                </p>
+                <p class="text-gray-500 text-xs mt-2">
+                    Built with <i class="fas fa-heart text-blue-500"></i> and Tailwind CSS
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/tailwind-interactions.js"></script>
+</body>
+</html>
