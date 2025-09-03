@@ -1,0 +1,428 @@
+/* RPG Game Styles - Pixel Art Theme */
+
+/* Pixel Art Base Styles */
+.pixel-art {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.pixel-border {
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.pixel-text {
+    font-family: 'Courier New', monospace;
+    text-shadow: 2px 2px 0px #000;
+    font-weight: bold;
+}
+
+/* Game Container */
+.game-container {
+    min-height: 100vh;
+    background: #1a1a1a;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Wake Up Animation */
+.wake-up-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    z-index: 9999;
+    clip-path: circle(0% at 50% 50%);
+    animation: wakeUp 2s ease-out forwards;
+}
+
+@keyframes wakeUp {
+    0% { 
+        clip-path: circle(0% at 50% 50%);
+        background-color: #000000;
+    }
+    100% { 
+        clip-path: circle(100% at 50% 50%);
+        background-color: transparent;
+    }
+}
+
+/* Room Scene */
+.room-scene {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(180deg, #87CEEB 0%, #98FB98 100%);
+    overflow: hidden;
+}
+
+.room-floor {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(180deg, #8B4513 0%, #A0522D 100%);
+    background-image: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 19px,
+            rgba(0,0,0,0.1) 20px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 19px,
+            rgba(0,0,0,0.1) 20px
+        );
+}
+
+.room-walls {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(180deg, #F5DEB3 0%, #DEB887 100%);
+    background-image: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 19px,
+            rgba(0,0,0,0.05) 20px
+        );
+}
+
+/* Room Furniture */
+.room-furniture {
+    position: absolute;
+    bottom: 20%;
+    right: 10%;
+    width: 80px;
+    height: 60px;
+    background: #8B4513;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.room-furniture::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    width: 60px;
+    height: 20px;
+    background: #A0522D;
+    border: 2px solid #000;
+    box-shadow: 2px 2px 0px #000;
+}
+
+.room-bed {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    width: 100px;
+    height: 60px;
+    background: #8B4513;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
+}
+
+.room-bed::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 5px;
+    width: 90px;
+    height: 10px;
+    background: #FFB6C1;
+    border: 2px solid #000;
+}
+
+.room-window {
+    position: absolute;
+    top: 20%;
+    right: 15%;
+    width: 60px;
+    height: 40px;
+    background: #87CEEB;
+    border: 3px solid #000;
+    box-shadow: inset 2px 2px 0px #000;
+}
+
+.room-window::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #000;
+}
+
+.room-window::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: #000;
+}
+
+/* Character */
+.character-container {
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.character {
+    width: 64px;
+    height: 64px;
+    background: #4169E1;
+    border: 2px solid #000;
+    position: relative;
+    box-shadow: 4px 4px 0px #000;
+    transition: all 0.3s ease;
+}
+
+.character::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: #FFD700;
+    border: 1px solid #000;
+    border-radius: 50%;
+}
+
+.character::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 8px;
+    background: #228B22;
+    border: 1px solid #000;
+}
+
+.character.standing {
+    transform: translateX(-50%) scaleY(1.2);
+}
+
+.character.walking {
+    animation: walk 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes walk {
+    0% { transform: translateX(-50%) translateY(0px); }
+    100% { transform: translateX(-50%) translateY(-4px); }
+}
+
+/* UI Elements */
+.ui-panel {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 3px solid #FFD700;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 100;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.dialogue-box {
+    background: #000;
+    border: 2px solid #FFD700;
+    padding: 15px;
+    margin-bottom: 15px;
+    color: #FFF;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    line-height: 1.4;
+    min-height: 60px;
+    box-shadow: inset 2px 2px 0px #FFD700;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pixel-button {
+    background: #4169E1;
+    border: 2px solid #000;
+    color: #FFF;
+    padding: 10px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.1s;
+    box-shadow: 4px 4px 0px #000;
+    text-shadow: 1px 1px 0px #000;
+}
+
+.pixel-button:hover {
+    background: #5A7BE8;
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0px #000;
+}
+
+.pixel-button:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 0px #000;
+}
+
+.pixel-button.secondary {
+    background: #8A2BE2;
+}
+
+.pixel-button.secondary:hover {
+    background: #9932CC;
+}
+
+.pixel-button.danger {
+    background: #DC143C;
+}
+
+.pixel-button.danger:hover {
+    background: #FF1744;
+}
+
+/* Status Bar */
+.status-bar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #FFD700;
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-item {
+    color: #FFF;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Inventory */
+.inventory-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    border: 3px solid #FFD700;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 200;
+    display: none;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.inventory-panel.show {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.inventory-slot {
+    width: 60px;
+    height: 60px;
+    background: #333;
+    border: 2px solid #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: #999;
+}
+
+.inventory-slot.filled {
+    background: #555;
+    border-color: #FFD700;
+    color: #FFF;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ui-panel {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        padding: 15px;
+    }
+    
+    .dialogue-box {
+        font-size: 14px;
+        padding: 12px;
+    }
+    
+    .pixel-button {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    .action-buttons {
+        gap: 8px;
+    }
+    
+    .status-bar {
+        left: 10px;
+        right: 10px;
+        top: 10px;
+        padding: 8px;
+    }
+    
+    .status-item {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .pixel-button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .inventory-panel {
+        left: 10px;
+        right: 10px;
+        transform: translateY(-50%);
+        min-width: auto;
+    }
+}

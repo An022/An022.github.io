@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="An Lee - RPG Adventure">
+    <meta name="author" content="An Lee">
+    <title>An Lee - RPG Adventure</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Config for RPG Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pixel: {
+                            dark: '#1a1a1a',
+                            brown: '#8B4513',
+                            green: '#228B22',
+                            blue: '#4169E1',
+                            red: '#DC143C',
+                            yellow: '#FFD700',
+                            purple: '#8A2BE2',
+                            gray: '#696969'
+                        }
+                    },
+                    fontFamily: {
+                        'pixel': ['Courier New', 'monospace'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'wake-up': 'wakeUp 2s ease-out',
+                        'pixel-bounce': 'pixelBounce 0.5s ease-in-out',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        wakeUp: {
+                            '0%': { 
+                                clipPath: 'circle(0% at 50% 50%)',
+                                backgroundColor: '#000000'
+                            },
+                            '100%': { 
+                                clipPath: 'circle(100% at 50% 50%)',
+                                backgroundColor: 'transparent'
+                            },
+                        },
+                        pixelBounce: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-4px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px #FFD700' },
+                            '100%': { boxShadow: '0 0 20px #FFD700, 0 0 30px #FFD700' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Pixel Art Styles */
+        .pixel-art {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+        
+        .pixel-border {
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0px #000;
+        }
+        
+        .pixel-text {
+            font-family: 'Courier New', monospace;
+            text-shadow: 2px 2px 0px #000;
+        }
+        
+        .room-bg {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #8B4513 100%);
+            background-size: 20px 20px;
+            background-image: 
+                linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(0,0,0,0.1) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.1) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.1) 75%);
+        }
+        
+        .character {
+            width: 64px;
+            height: 64px;
+            background: #4169E1;
+            border: 2px solid #000;
+            position: relative;
+        }
+        
+        .character::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: #FFD700;
+            border: 1px solid #000;
+            border-radius: 50%;
+        }
+        
+        .character::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 8px;
+            background: #228B22;
+            border: 1px solid #000;
+        }
+        
+        .wake-up-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: 9999;
+            clip-path: circle(0% at 50% 50%);
+            animation: wakeUp 2s ease-out forwards;
+        }
+        
+        .game-container {
+            min-height: 100vh;
+            background: #1a1a1a;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .room-scene {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(180deg, #87CEEB 0%, #98FB98 100%);
+        }
+        
+        .room-floor {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(180deg, #8B4513 0%, #A0522D 100%);
+        }
+        
+        .room-walls {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(180deg, #F5DEB3 0%, #DEB887 100%);
+        }
+        
+        .room-furniture {
+            position: absolute;
+            bottom: 20%;
+            right: 10%;
+            width: 80px;
+            height: 60px;
+            background: #8B4513;
+            border: 2px solid #000;
+        }
+        
+        .room-furniture::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            width: 60px;
+            height: 20px;
+            background: #A0522D;
+            border: 2px solid #000;
+        }
+        
+        .character-container {
+            position: absolute;
+            bottom: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        
+        .ui-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #FFD700;
+            padding: 15px;
+            border-radius: 8px;
+            z-index: 100;
+        }
+        
+        .dialogue-box {
+            background: #000;
+            border: 2px solid #FFD700;
+            padding: 15px;
+            margin-bottom: 10px;
+            color: #FFF;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .pixel-button {
+            background: #4169E1;
+            border: 2px solid #000;
+            color: #FFF;
+            padding: 8px 16px;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+        
+        .pixel-button:hover {
+            background: #5A7BE8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 0px #000;
+        }
+        
+        .pixel-button:active {
+            transform: translateY(0px);
+            box-shadow: 0 2px 0px #000;
+        }
+    </style>
+</head>
+
+<body class="bg-pixel-dark text-white">
+    <!-- Wake Up Animation Overlay -->
+    <div id="wakeUpOverlay" class="wake-up-overlay"></div>
+    
+    <!-- Game Container -->
+    <div id="gameContainer" class="game-container" style="display: none;">
+        <!-- Room Scene -->
+        <div id="roomScene" class="room-scene">
+            <!-- Room Walls -->
+            <div class="room-walls"></div>
+            
+            <!-- Room Floor -->
+            <div class="room-floor"></div>
+            
+            <!-- Room Furniture -->
+            <div class="room-furniture"></div>
+            
+            <!-- Character -->
+            <div class="character-container">
+                <div id="character" class="character pixel-art"></div>
+            </div>
+        </div>
+        
+        <!-- UI Panel -->
+        <div class="ui-panel">
+            <div id="dialogueBox" class="dialogue-box">
+                <p id="dialogueText">你慢慢睜開眼睛，發現自己躺在一個陌生的房間裡...</p>
+            </div>
+            <div class="action-buttons">
+                <button id="lookAroundBtn" class="pixel-button">環顧四周</button>
+                <button id="standUpBtn" class="pixel-button">站起來</button>
+                <button id="checkInventoryBtn" class="pixel-button">檢查物品</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Script -->
+    <script>
+        class RPGGame {
+            constructor() {
+                this.currentScene = 'wakeUp';
+                this.characterState = 'lying';
+                this.inventory = [];
+                this.init();
+            }
+            
+            init() {
+                // Start wake up animation
+                setTimeout(() => {
+                    this.showRoomScene();
+                }, 2000);
+                
+                this.setupEventListeners();
+            }
+            
+            showRoomScene() {
+                const wakeUpOverlay = document.getElementById('wakeUpOverlay');
+                const gameContainer = document.getElementById('gameContainer');
+                
+                wakeUpOverlay.style.display = 'none';
+                gameContainer.style.display = 'block';
+                gameContainer.classList.add('animate-fade-in');
+                
+                // Add character animation
+                const character = document.getElementById('character');
+                character.classList.add('animate-pixel-bounce');
+            }
+            
+            setupEventListeners() {
+                document.getElementById('lookAroundBtn').addEventListener('click', () => {
+                    this.lookAround();
+                });
+                
+                document.getElementById('standUpBtn').addEventListener('click', () => {
+                    this.standUp();
+                });
+                
+                document.getElementById('checkInventoryBtn').addEventListener('click', () => {
+                    this.checkInventory();
+                });
+            }
+            
+            lookAround() {
+                const dialogueText = document.getElementById('dialogueText');
+                const messages = [
+                    "你環顧四周，這是一個簡樸的房間...",
+                    "牆壁是木質的，有一扇窗戶透進陽光...",
+                    "房間裡有一張床、一個櫃子和一張桌子...",
+                    "看起來像是某個小鎮的旅館房間..."
+                ];
+                
+                let currentMessage = 0;
+                this.typeText(dialogueText, messages[currentMessage]);
+                
+                // Cycle through messages
+                const interval = setInterval(() => {
+                    currentMessage++;
+                    if (currentMessage < messages.length) {
+                        this.typeText(dialogueText, messages[currentMessage]);
+                    } else {
+                        clearInterval(interval);
+                    }
+                }, 3000);
+            }
+            
+            standUp() {
+                if (this.characterState === 'lying') {
+                    this.characterState = 'standing';
+                    const character = document.getElementById('character');
+                    const dialogueText = document.getElementById('dialogueText');
+                    
+                    character.style.transform = 'translateX(-50%) scaleY(1.2)';
+                    this.typeText(dialogueText, "你慢慢站了起來，感覺身體有些僵硬...");
+                    
+                    // Update button text
+                    document.getElementById('standUpBtn').textContent = '坐下';
+                } else {
+                    this.characterState = 'lying';
+                    const character = document.getElementById('character');
+                    const dialogueText = document.getElementById('dialogueText');
+                    
+                    character.style.transform = 'translateX(-50%) scaleY(1)';
+                    this.typeText(dialogueText, "你重新躺了下來，感覺需要更多休息...");
+                    
+                    // Update button text
+                    document.getElementById('standUpBtn').textContent = '站起來';
+                }
+            }
+            
+            checkInventory() {
+                const dialogueText = document.getElementById('dialogueText');
+                if (this.inventory.length === 0) {
+                    this.typeText(dialogueText, "你檢查了身上的物品，發現什麼都沒有...");
+                } else {
+                    this.typeText(dialogueText, `你的物品：${this.inventory.join(', ')}`);
+                }
+            }
+            
+            typeText(element, text) {
+                element.textContent = '';
+                let i = 0;
+                const typeInterval = setInterval(() => {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typeInterval);
+                    }
+                }, 50);
+            }
+        }
+        
+        // Initialize game when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new RPGGame();
+        });
+    </script>
+</body>
+</html>
