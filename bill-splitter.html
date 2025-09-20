@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Bill Splitter - Easy dining bill splitting tool by An Lee">
+    <meta name="author" content="An Lee">
+    <title>Bill Splitter - An Lee</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e293b',
+                        accent: '#06b6d4',
+                        cold: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #7dd3fc 0%, #60a5fa 50%, #93c5fd 100%);
+        }
+        .card-gradient {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+        }
+        .hover-lift {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(14, 165, 233, 0.25);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #0ea5e9, #1e40af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-divider {
+            background: linear-gradient(90deg, transparent, #0ea5e9, transparent);
+            height: 2px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">AL</span>
+                    </div>
+                    <div>
+                        <h5 class="font-bold text-gray-800">An Lee</h5>
+                        <div class="text-xs text-gray-600">Software Engineer</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition-colors duration-300 font-medium">← Back to Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center text-white">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
+                <span class="text-gradient bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">Bill Splitter</span>
+            </h1>
+            <p class="text-xl text-gray-200 mb-8 animate-slide-up">
+                Easy dining bill splitting with tax, tip, and discount calculations
+            </p>
+            <div class="bg-white/20 backdrop-blur-md rounded-xl p-6 animate-slide-up">
+                <p class="text-lg">
+                    Split bills fairly among friends with automatic tax calculations, tip distribution, and discount handling. 
+                    Perfect for restaurants, group dining, and shared expenses.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bill Splitter App -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white rounded-3xl shadow-xl border-2 border-gray-100 overflow-hidden">
+                <!-- App Header -->
+                <div class="bg-gradient-to-r from-primary to-accent p-6 text-white">
+                    <h2 class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-calculator mr-3"></i>
+                        Bill Splitter Calculator
+                    </h2>
+                    <p class="text-blue-100 mt-2">Enter your bill details and let us handle the math</p>
+                </div>
+
+                <!-- App Content -->
+                <div class="p-8">
+                    <form id="billForm" class="space-y-6">
+                        <!-- People Section -->
+                        <div class="bg-gray-50 rounded-xl p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                <i class="fas fa-users text-primary mr-3"></i>
+                                Participants
+                            </h3>
+                            <div id="peopleContainer" class="space-y-3">
+                                <div class="flex items-center space-x-3">
+                                    <input type="text" name="person" placeholder="Enter name" 
+                                           class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <button type="button" onclick="removePerson(this)" class="text-red-500 hover:text-red-700 p-2">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="button" onclick="addPerson()" class="mt-4 text-primary hover:text-blue-600 flex items-center">
+                                <i class="fas fa-plus mr-2"></i>Add Person
+                            </button>
+                        </div>
+
+                        <!-- Items Section -->
+                        <div class="bg-gray-50 rounded-xl p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                <i class="fas fa-utensils text-primary mr-3"></i>
+                                Items & Prices
+                            </h3>
+                            <div id="itemsContainer" class="space-y-3">
+                                <div class="flex items-center space-x-3">
+                                    <input type="text" name="itemName" placeholder="Item name" 
+                                           class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <input type="number" name="itemPrice" placeholder="Price" step="0.01" min="0"
+                                           class="w-32 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <div class="w-48 px-4 py-3 bg-gray-200 rounded-lg text-sm text-gray-600">
+                                        <span class="participant-count">0 people</span>
+                                    </div>
+                                    <button type="button" onclick="removeItem(this)" class="text-red-500 hover:text-red-700 p-2">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="button" onclick="addItem()" class="mt-4 text-primary hover:text-blue-600 flex items-center">
+                                <i class="fas fa-plus mr-2"></i>Add Item
+                            </button>
+                        </div>
+
+                        <!-- Settings Section -->
+                        <div class="bg-gray-50 rounded-xl p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                                <i class="fas fa-cog text-primary mr-3"></i>
+                                Settings
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Tax Rate (%)</label>
+                                    <input type="number" id="taxRate" value="8.875" step="0.001" min="0" max="50"
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Tip (%)</label>
+                                    <input type="number" id="tipRate" value="18" step="0.1" min="0" max="100"
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Currency</label>
+                                    <select id="currency" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                        <option value="USD">USD ($)</option>
+                                        <option value="TWD">TWD (NT$)</option>
+                                        <option value="JPY">JPY (¥)</option>
+                                        <option value="EUR">EUR (€)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <div class="text-center">
+                            <button type="submit" class="bg-card-gradient text-white px-8 py-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover-lift">
+                                <i class="fas fa-calculator mr-2"></i>Calculate Split
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="resultsSection" class="py-16 bg-gray-50 hidden">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-white rounded-3xl shadow-xl border-2 border-gray-100 overflow-hidden">
+                <div class="bg-gradient-to-r from-green-500 to-green-600 p-6 text-white">
+                    <h2 class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-check-circle mr-3"></i>
+                        Split Results
+                    </h2>
+                    <p class="text-green-100 mt-2">Here's how much each person should pay</p>
+                </div>
+                
+                <div class="p-8">
+                    <div id="resultsContent"></div>
+                    
+                    <div class="mt-8 flex flex-wrap gap-4 justify-center">
+                        <button onclick="copyResults()" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors">
+                            <i class="fas fa-copy mr-2"></i>Copy Results
+                        </button>
+                        <button onclick="resetCalculator()" class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors">
+                            <i class="fas fa-refresh mr-2"></i>Start New Bill
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Features</h2>
+                <div class="section-divider w-24 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-white rounded-2xl shadow-lg hover-lift">
+                    <div class="w-16 h-16 bg-card-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Multi-Person Support</h3>
+                    <p class="text-gray-600">Split bills among any number of people with automatic calculation</p>
+                </div>
+                
+                <div class="text-center p-6 bg-white rounded-2xl shadow-lg hover-lift">
+                    <div class="w-16 h-16 bg-card-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-percentage text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Smart Calculations</h3>
+                    <p class="text-gray-600">Automatic tax, tip, and discount calculations with precision</p>
+                </div>
+                
+                <div class="text-center p-6 bg-white rounded-2xl shadow-lg hover-lift">
+                    <div class="w-16 h-16 bg-card-gradient rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-globe text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Multi-Currency</h3>
+                    <p class="text-gray-600">Support for USD, TWD, JPY, EUR and more currencies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="mailto:leeans222@gmail.com" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/an222/" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="https://github.com/An022" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                </div>
+                <p class="text-gray-400 text-sm">
+                    &copy; <script>document.write(new Date().getFullYear())</script> An Lee. All rights reserved.
+                </p>
+                <p class="text-gray-500 text-xs mt-2">
+                    Built with <i class="fas fa-heart text-blue-500"></i> and Tailwind CSS
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        let people = [];
+        let items = [];
+
+        // Add person functionality
+        function addPerson() {
+            const container = document.getElementById('peopleContainer');
+            const personDiv = document.createElement('div');
+            personDiv.className = 'flex items-center space-x-3';
+            personDiv.innerHTML = `
+                <input type="text" name="person" placeholder="Enter name" 
+                       class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                <button type="button" onclick="removePerson(this)" class="text-red-500 hover:text-red-700 p-2">
+                    <i class="fas fa-trash"></i>
+                </button>
+            `;
+            container.appendChild(personDiv);
+        }
+
+        function removePerson(button) {
+            const container = document.getElementById('peopleContainer');
+            if (container.children.length > 1) {
+                button.parentElement.remove();
+            }
+        }
+
+        // Add item functionality
+        function addItem() {
+            const container = document.getElementById('itemsContainer');
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'flex items-center space-x-3';
+            itemDiv.innerHTML = `
+                <input type="text" name="itemName" placeholder="Item name" 
+                       class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                <input type="number" name="itemPrice" placeholder="Price" step="0.01" min="0"
+                       class="w-32 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                <div class="w-48 px-4 py-3 bg-gray-200 rounded-lg text-sm text-gray-600">
+                    <span class="participant-count">0 people</span>
+                </div>
+                <button type="button" onclick="removeItem(this)" class="text-red-500 hover:text-red-700 p-2">
+                    <i class="fas fa-trash"></i>
+                </button>
+            `;
+            container.appendChild(itemDiv);
+        }
+
+        function removeItem(button) {
+            const container = document.getElementById('itemsContainer');
+            if (container.children.length > 1) {
+                button.parentElement.remove();
+            }
+        }
+
+        // Format currency
+        function formatCurrency(amount, currency = 'USD') {
+            const symbols = {
+                'USD': '$',
+                'TWD': 'NT$',
+                'JPY': '¥',
+                'EUR': '€'
+            };
+            return `${symbols[currency]}${amount.toFixed(2)}`;
+        }
+
+        // Calculate split
+        function calculateSplit() {
+            // Get people
+            const personInputs = document.querySelectorAll('input[name="person"]');
+            people = Array.from(personInputs)
+                .map(input => input.value.trim())
+                .filter(name => name);
+
+            // Get items
+            const itemRows = document.querySelectorAll('#itemsContainer > div');
+            items = Array.from(itemRows).map(row => {
+                const nameInput = row.querySelector('input[name="itemName"]');
+                const priceInput = row.querySelector('input[name="itemPrice"]');
+                return {
+                    name: nameInput.value.trim(),
+                    price: parseFloat(priceInput.value) || 0
+                };
+            }).filter(item => item.name && item.price > 0);
+
+            if (people.length === 0) {
+                alert('Please add at least one person');
+                return;
+            }
+
+            if (items.length === 0) {
+                alert('Please add at least one item');
+                return;
+            }
+
+            // Get settings
+            const taxRate = parseFloat(document.getElementById('taxRate').value) / 100;
+            const tipRate = parseFloat(document.getElementById('tipRate').value) / 100;
+            const currency = document.getElementById('currency').value;
+
+            // Calculate totals
+            const subtotal = items.reduce((sum, item) => sum + item.price, 0);
+            const tax = subtotal * taxRate;
+            const tip = subtotal * tipRate;
+            const total = subtotal + tax + tip;
+
+            // Calculate per person
+            const perPerson = total / people.length;
+
+            // Display results
+            displayResults(people, items, subtotal, tax, tip, total, perPerson, currency);
+        }
+
+        // Display results
+        function displayResults(people, items, subtotal, tax, tip, total, perPerson, currency) {
+            const resultsContent = document.getElementById('resultsContent');
+            const resultsSection = document.getElementById('resultsSection');
+
+            let html = `
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="text-center p-6 bg-blue-50 rounded-xl">
+                        <div class="text-2xl font-bold text-blue-600">${formatCurrency(subtotal, currency)}</div>
+                        <div class="text-sm text-gray-600">Subtotal</div>
+                    </div>
+                    <div class="text-center p-6 bg-green-50 rounded-xl">
+                        <div class="text-2xl font-bold text-green-600">${formatCurrency(total, currency)}</div>
+                        <div class="text-sm text-gray-600">Total (with tax & tip)</div>
+                    </div>
+                    <div class="text-center p-6 bg-purple-50 rounded-xl">
+                        <div class="text-2xl font-bold text-purple-600">${formatCurrency(perPerson, currency)}</div>
+                        <div class="text-sm text-gray-600">Per Person</div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-6 mb-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Breakdown</h3>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div class="flex justify-between">
+                            <span>Subtotal:</span>
+                            <span>${formatCurrency(subtotal, currency)}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Tax (${(parseFloat(document.getElementById('taxRate').value))}%):</span>
+                            <span>${formatCurrency(tax, currency)}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Tip (${(parseFloat(document.getElementById('tipRate').value))}%):</span>
+                            <span>${formatCurrency(tip, currency)}</span>
+                        </div>
+                        <div class="flex justify-between font-semibold border-t pt-2">
+                            <span>Total:</span>
+                            <span>${formatCurrency(total, currency)}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">What Each Person Pays</h3>
+                    <div class="space-y-3">
+            `;
+
+            people.forEach((person, index) => {
+                html += `
+                    <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                        <span class="font-medium">${person}</span>
+                        <span class="text-lg font-bold text-primary">${formatCurrency(perPerson, currency)}</span>
+                    </div>
+                `;
+            });
+
+            html += `
+                    </div>
+                </div>
+            `;
+
+            resultsContent.innerHTML = html;
+            resultsSection.classList.remove('hidden');
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Copy results
+        function copyResults() {
+            const people = Array.from(document.querySelectorAll('input[name="person"]'))
+                .map(input => input.value.trim())
+                .filter(name => name);
+            
+            const perPerson = document.querySelector('.text-purple-600').textContent;
+            const total = document.querySelector('.text-green-600').textContent;
+
+            let text = `Bill Split Results:\n\n`;
+            text += `Total: ${total}\n`;
+            text += `Per Person: ${perPerson}\n\n`;
+            text += `Each person pays:\n`;
+            people.forEach(person => {
+                text += `${person}: ${perPerson}\n`;
+            });
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Results copied to clipboard!');
+            });
+        }
+
+        // Reset calculator
+        function resetCalculator() {
+            document.getElementById('billForm').reset();
+            document.getElementById('resultsSection').classList.add('hidden');
+            
+            // Reset to default values
+            document.getElementById('taxRate').value = '8.875';
+            document.getElementById('tipRate').value = '18';
+            document.getElementById('currency').value = 'USD';
+        }
+
+        // Form submission
+        document.getElementById('billForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            calculateSplit();
+        });
+
+        // Initialize with one person and one item
+        document.addEventListener('DOMContentLoaded', function() {
+            addPerson();
+            addItem();
+        });
+    </script>
+</body>
+</html>
