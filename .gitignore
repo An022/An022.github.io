@@ -3,4 +3,10 @@ _site/
 *.DS_Store
 .idea
 *.swp
-.Trashes
+.Trashesnode_modules/
+.vscode/
+src/
+public/
+package*.json
+postcss.config.js
+tailwind.config.js
