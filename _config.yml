@@ -1,12 +1,12 @@
 # Basic
-title: Chris Zhong
+title: An Lee
 subtitle: Personal Blog
 description: Welcome to my blog
 # 头像里面的标题
-avatarTitle: Chris Zhong
+avatarTitle: An Lee
 # 头像里面的描述
-avatarDesc: Software Engineer
-url: "https://XXXXXX"
+avatarDesc: Software Developer
+url: "https://an022.github.io"
 
 # 博客是否自动生成目录，false为不生成
 enableToc: true
@@ -19,11 +19,11 @@ comment:
 
 # Social
 social:
-  portfolio: XXXX
-  github: XXXXXX
+  portfolio: https://an022.github.io
+  github: An022
   #    jianshu:
   # twitter:
-  mail: XXXX@gmail.com
+  mail: leeans222@gmail.com
 
 # 《----------------- 上面的信息修改成你自己的 ---------------------------》
 #
