@@ -1,6 +1,6 @@
 (() => {
-  const COLS = 10;
-  const ROWS = 6;
+  let cols = 10;
+  let rows = 6;
   const businessKeys = new Set(['w', 'a', 's', 'd']);
   const techKeys = new Set(['ArrowUp', 'ArrowLeft', 'ArrowDown', 'ArrowRight']);
   const validKeys = new Set([...businessKeys, ...techKeys]);
@@ -23,27 +23,38 @@
   const chargeText = document.getElementById('chargeText');
   const gameShell = document.getElementById('game');
   const resetLevel = document.getElementById('resetLevel');
+  const undoMove = document.getElementById('undoMove');
 
   const levels = {
     1: {
       mode: 'sokoban',
+      cols: 8,
+      rows: 7,
       label: 'CHAPTER 01 / THE SIGNAL GARDEN',
-      title: 'Pip finds what matters.',
-      copy: 'A good decision begins with a question and ends with a call. Push each lost signal into its matching moon socket when its moment feels right.',
+      title: 'Pip restores the decision room.',
+      copy: 'Four pieces of a good decision are jammed in an old Earth warehouse. Get every cargo crate onto a moon dock—but plan ahead. A careless push can strand one forever.',
       player: 'business',
-      start: { x: 1, y: 5 },
-      boxes: [
-        { x: 2, y: 3, label: 'Ask Why', target: { x: 2, y: 1 }, sprite: [11, 1] },
-        { x: 4, y: 4, label: 'Read Data', target: { x: 4, y: 1 }, sprite: [12, 2] },
-        { x: 6, y: 3, label: 'Spot Risk', target: { x: 6, y: 1 }, sprite: [16, 2] },
-        { x: 8, y: 4, label: 'Make the Call', target: { x: 8, y: 1 }, sprite: [14, 4] }
+      start: { x: 4, y: 3 },
+      map: [
+        ' #######',
+        ' #.....#',
+        ' #.....#',
+        '##.....#',
+        '#......#',
+        '#......#',
+        '########'
       ],
-      walls: [
-        { x: 0, y: 2, label: 'NOISE' },
-        { x: 3, y: 2, label: 'SILO' },
-        { x: 5, y: 2, label: 'SILO' },
-        { x: 7, y: 2, label: 'SILO' },
-        { x: 9, y: 3, label: 'GUESS' }
+      goals: [
+        { x: 3, y: 2 },
+        { x: 5, y: 2 },
+        { x: 3, y: 4 },
+        { x: 5, y: 4 }
+      ],
+      boxes: [
+        { x: 4, y: 2, label: 'WHY', sprite: [4, 7] },
+        { x: 3, y: 3, label: 'DATA', sprite: [3, 7] },
+        { x: 5, y: 3, label: 'RISK', sprite: [2, 7] },
+        { x: 4, y: 4, label: 'CALL', sprite: [1, 7] }
       ]
     },
     2: {
@@ -121,18 +132,21 @@
   let hazards = [];
   let switches = [];
   let gates = [];
+  let goals = [];
+  let terrain = [];
+  let moveHistory = [];
 
   function samePoint(a, b) {
     return a.x === b.x && a.y === b.y;
   }
 
   function inside(point) {
-    return point.x >= 0 && point.x < COLS && point.y >= 0 && point.y < ROWS;
+    return point.x >= 0 && point.x < cols && point.y >= 0 && point.y < rows;
   }
 
   function position(element, point) {
-    element.style.left = String(point.x * 10) + '%';
-    element.style.top = String(point.y * (100 / ROWS)) + '%';
+    element.style.left = String(point.x * (100 / cols)) + '%';
+    element.style.top = String(point.y * (100 / rows)) + '%';
   }
 
   function setSprite(element, sprite) {
@@ -150,7 +164,16 @@
   }
 
   function clearArena() {
-    arena.querySelectorAll('.game-crate, .workshop-wall, .goal-socket, .scene-hazard, .moon-switch, .moon-gate, .meeting-signal').forEach((element) => element.remove());
+    arena.querySelectorAll('.terrain-tile, .game-crate, .workshop-wall, .goal-socket, .scene-hazard, .moon-switch, .moon-gate, .meeting-signal').forEach((element) => element.remove());
+  }
+
+  function addTerrain(tile) {
+    const element = document.createElement('div');
+    element.className = 'terrain-tile is-' + tile.kind;
+    element.setAttribute('aria-hidden', 'true');
+    element.innerHTML = '<span></span>';
+    position(element, tile);
+    arena.appendChild(element);
   }
 
   function addWall(wall) {
@@ -162,19 +185,20 @@
     arena.appendChild(element);
   }
 
-  function addGoal(box, index) {
+  function addGoal(goal, index) {
     const element = document.createElement('div');
-    element.className = 'goal-socket is-' + (box.owner || currentLevel().player) + (box.locked ? ' is-filled' : '');
+    const filled = boxIndexAt(goal) >= 0;
+    element.className = 'goal-socket is-' + currentLevel().player + (filled ? ' is-filled' : '');
     element.dataset.goal = String(index);
-    element.innerHTML = '<span aria-hidden="true"></span><small></small>';
-    element.querySelector('small').textContent = box.label;
-    position(element, box.target);
+    element.innerHTML = '<span aria-hidden="true"></span>';
+    position(element, goal);
     arena.appendChild(element);
   }
 
   function addBox(box, index) {
     const element = document.createElement('div');
-    element.className = 'game-crate is-' + (box.owner || currentLevel().player) + (box.locked ? ' is-locked' : '');
+    const onGoal = goalAt(box);
+    element.className = 'game-crate is-' + (box.owner || currentLevel().player) + (onGoal ? ' is-on-goal' : '');
     element.dataset.box = String(index);
     element.innerHTML = '<span class="part-pixel" aria-hidden="true"></span><small></small>';
     element.querySelector('small').textContent = box.label;
@@ -224,8 +248,9 @@
 
   function renderArena() {
     clearArena();
+    terrain.forEach(addTerrain);
     walls.forEach(addWall);
-    boxes.forEach(addGoal);
+    goals.forEach(addGoal);
     boxes.forEach(addBox);
     hazards.forEach(addHazard);
     gates.forEach(addGate);
@@ -235,7 +260,7 @@
 
   function renderProgress() {
     const labels = stage === 1
-      ? boxes.map((box) => box.locked ? box.label : '')
+      ? boxes.map((box) => goalAt(box) ? box.label : '')
       : stage === 2
         ? hazards.map((hazard) => hazard.solved ? hazard.action : '')
         : switches.map((item) => item.used ? 'Channel shifted' : '');
@@ -274,6 +299,11 @@
     chargeFill.style.width = '0%';
 
     const config = currentLevel();
+    cols = config.cols || 10;
+    rows = config.rows || 6;
+    arena.style.setProperty('--game-cols', cols);
+    arena.style.setProperty('--game-rows', rows);
+    arena.style.aspectRatio = cols + ' / ' + rows;
     arena.dataset.mode = config.mode;
     levelLabel.textContent = config.label;
     levelTitle.textContent = config.title;
@@ -281,13 +311,23 @@
     stageCounter.textContent = 'CHAPTER 0' + String(number) + ' / 03';
     activeControls.innerHTML = controlsFor(number);
     chargePanel.hidden = true;
+    terrain = [];
     walls = (config.walls || []).map((item) => ({ ...item }));
-    boxes = (config.boxes || []).map((item, index) => ({
+    goals = (config.goals || []).map((item) => ({ ...item }));
+    if (config.map) {
+      walls = [];
+      config.map.forEach((line, y) => [...line].forEach((cell, x) => {
+        if (cell === '#') walls.push({ x, y, label: '' });
+        if (cell === '.') terrain.push({ x, y, kind: 'floor' });
+      }));
+    }
+    boxes = (config.boxes || []).map((item) => ({
       ...item,
-      target: { ...item.target },
-      order: index,
-      locked: false
+      target: item.target ? { ...item.target } : null
     }));
+    moveHistory = [];
+    undoMove.disabled = number !== 1;
+    undoMove.hidden = number !== 1;
     hazards = (config.hazards || []).map((item) => ({ ...item, solved: false }));
     switches = (config.switches || []).map((item) => ({ ...item, used: false }));
     gates = (config.gates || []).map((item) => ({ ...item }));
@@ -313,7 +353,7 @@
     setTouchState(number);
 
     if (number === 1) {
-      gameStatus.textContent = 'Crates can be pushed, never pulled. The story tells you more than the sockets do.';
+      gameStatus.textContent = 'Four crates. Four moon docks. Push, never pull—and watch the corners.';
     } else if (number === 2) {
       gameStatus.textContent = 'Bit is already moving. Watch the scene, then choose what the environment should do.';
       transitioning = true;
@@ -326,6 +366,34 @@
 
   function wallAt(point) {
     return walls.some((wall) => samePoint(wall, point));
+  }
+
+  function goalAt(point) {
+    return goals.some((goal) => samePoint(goal, point));
+  }
+
+  function walkable(point) {
+    if (!inside(point) || wallAt(point)) return false;
+    if (stage !== 1 || !currentLevel().map) return true;
+    return terrain.some((tile) => samePoint(tile, point));
+  }
+
+  function snapshotSokoban() {
+    return {
+      player: { ...players.business },
+      boxes: boxes.map((box) => ({ x: box.x, y: box.y }))
+    };
+  }
+
+  function restoreSokoban(snapshot) {
+    players.business = { ...snapshot.player };
+    boxes.forEach((box, index) => Object.assign(box, snapshot.boxes[index]));
+    progress = boxes.filter(goalAt).length;
+    position(businessPlayer, players.business);
+    renderProgress();
+    renderArena();
+    undoMove.disabled = moveHistory.length === 0;
+    gameStatus.textContent = 'One move rewound. The warehouse remembers nothing.';
   }
 
   function closedGateAt(point) {
@@ -370,32 +438,22 @@
 
   function tryPushBox(type, index, delta) {
     const box = boxes[index];
-    if (box.locked) {
-      gameStatus.textContent = 'That thought is already settled. Let it rest.';
-      return false;
-    }
-    if (box.order !== progress) {
-      gameStatus.textContent = 'The moon socket stays dark. This thought arrived too early.';
-      bump('[data-box="' + String(index) + '"]');
-      return false;
-    }
     const destination = { x: box.x + delta.x, y: box.y + delta.y };
-    if (!inside(destination) || wallAt(destination) || closedGateAt(destination) || boxIndexAt(destination) >= 0) {
-      gameStatus.textContent = 'The signal crystal clicks against something solid.';
+    if (!walkable(destination) || closedGateAt(destination) || boxIndexAt(destination) >= 0) {
+      gameStatus.textContent = 'The cargo crate thunks against something solid.';
       bump('[data-box="' + String(index) + '"]');
       return false;
     }
     box.x = destination.x;
     box.y = destination.y;
-    if (samePoint(box, box.target)) {
-      box.locked = true;
-      progress += 1;
-      gameStatus.textContent = box.label + ' resonates with the Why Lens.';
-      renderProgress();
-      if (progress === boxes.length) {
-        renderArena();
-        finishRoom('The Why Lens is restored. Somewhere across Earth, the engine answers.');
-      }
+    progress = boxes.filter(goalAt).length;
+    gameStatus.textContent = goalAt(box)
+      ? box.label + ' cargo clicks into a moon dock.'
+      : 'The crate rolls across the warehouse floor.';
+    renderProgress();
+    if (progress === boxes.length) {
+      renderArena();
+      finishRoom('The decision room hums: why, data, risk, call. Pip has restored the Why Lens.');
     }
     return true;
   }
@@ -423,7 +481,7 @@
     const delta = movement(key);
     const current = players[type];
     const next = { x: current.x + delta.x, y: current.y + delta.y };
-    if (!inside(next)) {
+    if (!walkable(next)) {
       gameStatus.textContent = 'The edge of Earth. The ocean looks cold.';
       return;
     }
@@ -435,12 +493,17 @@
     }
 
     const boxIndex = boxIndexAt(next);
+    const sokobanSnapshot = stage === 1 ? snapshotSokoban() : null;
     if (boxIndex >= 0 && !tryPushBox(type, boxIndex, delta)) return;
     players[type] = next;
     const playerElement = type === 'business' ? businessPlayer : techPlayer;
     position(playerElement, next);
     playerElement.classList.remove('is-stepping');
     window.requestAnimationFrame(() => playerElement.classList.add('is-stepping'));
+    if (stage === 1) {
+      moveHistory.push(sokobanSnapshot);
+      undoMove.disabled = false;
+    }
     if (boxIndex >= 0) renderArena();
     if (stage === 3) activateSwitch(type);
     if (atMeeting()) {
@@ -570,9 +633,18 @@
   });
 
   resetLevel.addEventListener('click', () => startLevel(stage));
+  undoMove.addEventListener('click', () => {
+    if (stage !== 1 || moveHistory.length === 0 || transitioning) return;
+    restoreSokoban(moveHistory.pop());
+  });
 
   window.addEventListener('keydown', (event) => {
     const key = normalizedKey(event);
+    if ((event.key === 'z' || event.key === 'Z') && stage === 1 && !play.hidden) {
+      event.preventDefault();
+      undoMove.click();
+      return;
+    }
     if (!validKeys.has(key) || play.hidden) return;
     event.preventDefault();
     pressKey(key);
