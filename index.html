@@ -16,26 +16,26 @@
   <section class="game-shell" id="game" aria-labelledby="gameTitle">
     <div class="game-frame">
       <div class="game-topbar">
-        <span class="game-brand">AN'S WORKSHOP</span>
+        <span class="game-brand">THE LAST SIGNAL HOME</span>
         <span id="stageCounter">INTRO / 03</span>
         <a id="skipGame" href="#home">Skip game ↓</a>
       </div>
 
       <div class="game-intro" id="gameIntro">
-        <p class="game-kicker">SYSTEM ALERT / VERY NORMAL WORKDAY</p>
-        <h1 id="gameTitle">The machine is<br><em>slightly broken.</em></h1>
-        <p>A “small last-minute request” has scrambled the Useful Thing™ Machine. Help me rebuild it with business sense, technical craft, and suspiciously good keyboard coordination.</p>
+        <p class="game-kicker">CRASH LOG 022 / PLANET EARTH</p>
+        <h1 id="gameTitle">Two tiny travelers.<br><em>One way home.</em></h1>
+        <p>Pip carries the Why Lens. Bit carries the How Spark. The crash scattered them across a strange Earth workshop—and their ship will not answer either one alone.</p>
         <div class="incident-card" aria-label="Incident report">
           <span class="incident-sprite" aria-hidden="true"></span>
-          <div><strong>INCIDENT #022: SCOPE CREEP</strong><small>Initial estimate: 2 hours · Current estimate: please don’t ask</small></div>
+          <div><strong>HOME SIGNAL CLOSES AT DAWN</strong><small>Find the meaning. Build the path. Reunite map and spark.</small></div>
         </div>
         <div class="control-preview" aria-label="Game controls">
-          <div><span class="hand-label business-label">LEFT HAND</span><div class="key-row"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></div><small>Business sense</small></div>
+          <div><span class="hand-label business-label">PIP · LEFT HAND</span><div class="key-row"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></div><small>Why Lens · Business sense</small></div>
           <div class="control-plus">+</div>
-          <div><span class="hand-label tech-label">RIGHT HAND</span><div class="key-row"><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></div><small>Technical craft</small></div>
+          <div><span class="hand-label tech-label">BIT · RIGHT HAND</span><div class="key-row"><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></div><small>How Spark · Technical craft</small></div>
         </div>
-        <button class="game-button" id="startGame" type="button">Fix the machine <span>→</span></button>
-        <p class="game-note">Collect in order. Wrong guesses come with free workplace commentary.</p>
+        <button class="game-button" id="startGame" type="button">Find the way home <span>→</span></button>
+        <p class="game-note">Three chapters. Three kinds of puzzles. No glowing answer key.</p>
       </div>
 
       <div class="game-play" id="gamePlay" hidden>
@@ -45,6 +45,7 @@
           <p id="levelCopy">Use your left hand to collect the pieces that turn a messy situation into a clear problem.</p>
           <div class="part-tray" id="partTray" aria-label="Collected parts"></div>
           <div class="active-controls" id="activeControls"></div>
+          <button class="reset-level" id="resetLevel" type="button">Restart room ↺</button>
         </div>
 
         <div class="arena-column">
@@ -53,7 +54,7 @@
             <div class="player business-player" id="businessPlayer" aria-label="Business player"><span>BUSINESS</span></div>
             <div class="player tech-player" id="techPlayer" aria-label="Technology player"><span>TECH</span></div>
             <div class="charge-panel" id="chargePanel" hidden>
-              <span>DUAL-SKILL CONNECTION</span>
+              <span>HOME SIGNAL / MAP + SPARK</span>
               <div class="charge-track"><div id="chargeFill"></div></div>
               <small id="chargeText">Move both players onto their matching ports.</small>
             </div>
@@ -75,8 +76,8 @@
       </div>
 
       <div class="game-complete" id="gameComplete" hidden>
-        <p class="game-kicker">USEFUL THING™ MACHINE / ONLINE</p>
-        <h2>Business finds <em>what matters.</em><br>Technology makes it <em>work.</em></h2>
+        <p class="game-kicker">DAWN / HOME SIGNAL ACQUIRED</p>
+        <h2>Pip knew <em>what mattered.</em><br>Bit knew <em>how to build it.</em><br>Together, they found home.</h2>
         <div class="unlock-grid">
           <div><span>BACKGROUND UNLOCKED</span><strong>Accounting → Computer Science → Software</strong><p>From Taiwan, now building in New York.</p></div>
           <div><span>WHAT I BUILD</span><strong>Applybook</strong><p>A calmer, connected job-search workspace.</p></div>
