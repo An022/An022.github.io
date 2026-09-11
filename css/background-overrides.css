@@ -304,3 +304,453 @@ kbd {
 @media (prefers-reduced-motion: reduce) {
   .player, .game-part { transition: none; }
 }
+
+/* Pixel workshop refresh */
+.game-shell {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 200, 102, 0.1) 0 2px, transparent 3px),
+    radial-gradient(circle at 82% 28%, rgba(117, 163, 255, 0.14) 0 2px, transparent 3px),
+    #050b14;
+  background-size: 70px 70px, 90px 90px, auto;
+}
+
+.game-frame {
+  border: 3px solid #385474;
+  border-radius: 4px;
+  box-shadow: 10px 10px 0 #02060b, 0 28px 90px rgba(0, 0, 0, 0.45);
+}
+
+.game-brand::before {
+  content: '▣';
+  margin-right: 8px;
+  color: #ffc866;
+}
+
+.game-intro {
+  padding-top: clamp(30px, 5vw, 64px);
+}
+
+.game-intro h1 {
+  max-width: 940px;
+  font-size: clamp(3rem, 6.2vw, 6rem);
+}
+
+.incident-card {
+  display: grid;
+  width: min(600px, 100%);
+  grid-template-columns: 56px 1fr;
+  gap: 15px;
+  margin-top: 22px;
+  padding: 12px 16px;
+  align-items: center;
+  border: 1px solid #5b4961;
+  background: rgba(61, 32, 55, 0.48);
+  text-align: left;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.28);
+}
+
+.incident-card strong,
+.incident-card small {
+  display: block;
+}
+
+.incident-card strong {
+  color: #ff9ea8;
+  font-size: 0.78rem;
+  letter-spacing: 1.2px;
+}
+
+.incident-card small {
+  margin-top: 4px;
+  color: #b7a7ba;
+  font-size: 0.75rem;
+}
+
+.incident-sprite,
+.player::before,
+.blocker-pixel {
+  background-image: url('/images/game/kenney-characters.png');
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+
+.incident-sprite {
+  width: 54px;
+  height: 54px;
+  background-size: 486px 162px;
+  background-position: -216px -54px;
+  animation: pixelBob 1.2s steps(2, end) infinite;
+}
+
+.control-preview {
+  margin-block: 22px 26px;
+}
+
+.game-play {
+  grid-template-columns: minmax(270px, 0.72fr) minmax(520px, 1.6fr);
+  padding: clamp(24px, 4vw, 52px);
+}
+
+.mission-panel h2 {
+  margin-bottom: 14px;
+}
+
+.part-tray {
+  counter-reset: parts;
+  gap: 7px;
+  margin: 22px 0;
+}
+
+.active-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+}
+
+.active-controls > span {
+  margin-right: 5px;
+}
+
+.active-controls kbd {
+  width: auto;
+  min-width: 29px;
+  padding-inline: 7px;
+  margin: 0;
+}
+
+.part-slot {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  min-height: 42px;
+  padding: 8px 11px;
+  border-width: 2px;
+  border-radius: 2px;
+}
+
+.part-slot::before {
+  display: none;
+}
+
+.part-slot b {
+  color: #536d88;
+  font: 700 0.7rem 'DM Sans', sans-serif;
+}
+
+.part-slot span {
+  color: inherit;
+}
+
+.part-slot small {
+  color: #8194aa;
+  font-size: 0.62rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.part-slot.collected b {
+  color: #ffc866;
+}
+
+.part-slot.collected span::after {
+  content: '  ✓';
+}
+
+.game-arena {
+  border: 3px solid #365b7e;
+  border-radius: 3px;
+  background:
+    linear-gradient(rgba(5, 15, 26, 0.84), rgba(5, 15, 26, 0.84)),
+    url('/images/game/kenney-tiles.png') center / 720px 396px;
+  box-shadow: 7px 7px 0 #030810, inset 0 0 60px rgba(0, 0, 0, 0.48);
+}
+
+.arena-grid {
+  background-image:
+    linear-gradient(rgba(54, 91, 126, 0.55) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(54, 91, 126, 0.55) 2px, transparent 2px);
+  opacity: 0.55;
+}
+
+.player {
+  display: flex;
+  width: 12.5%;
+  height: 20%;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.player::before {
+  content: '';
+  width: 54px;
+  height: 54px;
+  background-size: 486px 162px;
+  filter: drop-shadow(0 6px 5px rgba(0, 0, 0, 0.55));
+  transform-origin: 50% 80%;
+}
+
+.business-player::before {
+  background-position: 0 0;
+}
+
+.tech-player::before {
+  background-position: -108px 0;
+}
+
+.player > span {
+  position: absolute;
+  top: calc(50% + 22px);
+  padding: 2px 5px;
+  border: 1px solid currentColor;
+  background: #07111d;
+  font-size: 0.54rem;
+  letter-spacing: 0.6px;
+  line-height: 1;
+}
+
+.business-player > span { color: #ffc866; }
+.tech-player > span { color: #75a3ff; }
+
+.player.is-stepping::before {
+  animation: pixelStep 180ms steps(2, end);
+}
+
+.game-part {
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.game-part::before {
+  display: none;
+}
+
+.part-pixel {
+  width: 36px;
+  height: 36px;
+  background: url('/images/game/kenney-tiles.png') no-repeat;
+  background-size: 720px 396px;
+  background-position: calc(var(--sx) * -36px) calc(var(--sy) * -36px);
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+.game-part > small {
+  max-width: 92%;
+  margin-top: -2px;
+  padding: 2px 4px;
+  border: 1px solid currentColor;
+  background: rgba(5, 11, 20, 0.92);
+  color: #dce8f7;
+  font-size: clamp(0.48rem, 0.75vw, 0.64rem);
+  line-height: 1.1;
+  text-align: center;
+}
+
+.game-part.is-business { color: #ffc866; }
+.game-part.is-tech { color: #75a3ff; }
+.game-part.is-next .part-pixel { animation: softPulse 1.1s steps(3, end) infinite; }
+.game-part.is-hinted .part-pixel { animation: hardPulse 0.52s steps(2, end) infinite; }
+.game-part.is-bumped { animation: wrongBump 240ms steps(3, end); }
+
+.blocker {
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.blocker::before {
+  display: none;
+}
+
+.blocker-pixel {
+  width: 36px;
+  height: 36px;
+  background-size: 324px 108px;
+  background-position: calc(var(--csx) * -36px) calc(var(--csy) * -36px);
+  opacity: 0.55;
+}
+
+.blocker small {
+  max-width: 96%;
+  padding: 2px 4px;
+  border: 1px dashed #49627e;
+  background: rgba(9, 21, 37, 0.9);
+  color: #7289a2;
+  font-size: clamp(0.42rem, 0.66vw, 0.56rem);
+  line-height: 1.05;
+  text-align: center;
+}
+
+.port {
+  display: flex;
+  margin: 0;
+  width: 12.5%;
+  height: 20%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-width: 3px;
+  border-radius: 2px;
+  background: rgba(10, 25, 42, 0.76);
+  opacity: 1;
+}
+
+.port span {
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.port small {
+  margin-top: 3px;
+  font-size: 0.52rem;
+}
+
+.port.is-locked {
+  color: #526377;
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+.charge-panel {
+  border-width: 2px;
+  border-radius: 2px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+.game-status {
+  min-height: 42px;
+  padding: 9px 12px;
+  border: 1px solid #263e59;
+  background: #07111d;
+  color: #a8bad0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-align: left;
+}
+
+.pixel-credit {
+  margin-top: 18px;
+  color: #6f8298;
+  font-size: 0.7rem;
+}
+
+.pixel-credit a {
+  color: #9db9dc;
+}
+
+@keyframes pixelBob {
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes pixelStep {
+  50% { transform: translateY(-7px) rotate(-3deg); }
+}
+
+@keyframes softPulse {
+  50% { transform: translateY(-3px); filter: drop-shadow(0 0 11px currentColor) brightness(1.3); }
+}
+
+@keyframes hardPulse {
+  50% { transform: scale(1.35); filter: drop-shadow(0 0 16px #fff) brightness(1.8); }
+}
+
+@keyframes wrongBump {
+  25% { transform: translateX(-7px); }
+  75% { transform: translateX(7px); }
+}
+
+@media (max-width: 850px) {
+  .game-play {
+    grid-template-columns: 1fr;
+  }
+
+  .part-tray {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .incident-card {
+    grid-template-columns: 44px 1fr;
+  }
+
+  .incident-sprite {
+    width: 36px;
+    height: 36px;
+    background-size: 324px 108px;
+    background-position: -144px -36px;
+  }
+
+  .game-intro h1 {
+    font-size: clamp(2.55rem, 13.5vw, 4rem);
+  }
+
+  .game-intro > p:not(.game-kicker, .game-note) {
+    font-size: 0.9rem;
+  }
+
+  .part-tray {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .part-slot {
+    grid-template-columns: 22px 1fr;
+    font-size: 0.7rem;
+  }
+
+  .part-slot small {
+    display: none;
+  }
+
+  .player::before {
+    width: 36px;
+    height: 36px;
+    background-size: 324px 108px;
+  }
+
+  .tech-player::before {
+    background-position: -72px 0;
+  }
+
+  .player > span {
+    top: calc(50% + 14px);
+    font-size: 0.42rem;
+  }
+
+  .part-pixel,
+  .blocker-pixel {
+    width: 28px;
+    height: 28px;
+  }
+
+  .part-pixel {
+    background-size: 560px 308px;
+    background-position: calc(var(--sx) * -28px) calc(var(--sy) * -28px);
+  }
+
+  .blocker-pixel {
+    background-size: 252px 84px;
+    background-position: calc(var(--csx) * -28px) calc(var(--csy) * -28px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .incident-sprite,
+  .player.is-stepping::before,
+  .game-part.is-next .part-pixel,
+  .game-part.is-hinted .part-pixel,
+  .game-part.is-bumped {
+    animation: none;
+  }
+}

@@ -22,16 +22,20 @@
       </div>
 
       <div class="game-intro" id="gameIntro">
-        <p class="game-kicker">AN INTERACTIVE INTRODUCTION</p>
-        <h1 id="gameTitle">Two hands.<br><em>One builder.</em></h1>
-        <p>Collect the pieces behind the way I work. Start with business, move into technology, then bring both sides together.</p>
+        <p class="game-kicker">SYSTEM ALERT / VERY NORMAL WORKDAY</p>
+        <h1 id="gameTitle">The machine is<br><em>slightly broken.</em></h1>
+        <p>A “small last-minute request” has scrambled the Useful Thing™ Machine. Help me rebuild it with business sense, technical craft, and suspiciously good keyboard coordination.</p>
+        <div class="incident-card" aria-label="Incident report">
+          <span class="incident-sprite" aria-hidden="true"></span>
+          <div><strong>INCIDENT #022: SCOPE CREEP</strong><small>Initial estimate: 2 hours · Current estimate: please don’t ask</small></div>
+        </div>
         <div class="control-preview" aria-label="Game controls">
           <div><span class="hand-label business-label">LEFT HAND</span><div class="key-row"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></div><small>Business sense</small></div>
           <div class="control-plus">+</div>
           <div><span class="hand-label tech-label">RIGHT HAND</span><div class="key-row"><kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd></div><small>Technical craft</small></div>
         </div>
-        <button class="game-button" id="startGame" type="button">Enter the workshop <span>→</span></button>
-        <p class="game-note">No timer. No wrong answers. About one minute.</p>
+        <button class="game-button" id="startGame" type="button">Fix the machine <span>→</span></button>
+        <p class="game-note">Collect in order. Wrong guesses come with free workplace commentary.</p>
       </div>
 
       <div class="game-play" id="gamePlay" hidden>
@@ -46,8 +50,8 @@
         <div class="arena-column">
           <div class="game-arena" id="gameArena" tabindex="0" aria-label="Game area. Use the keyboard controls shown on screen.">
             <div class="arena-grid" aria-hidden="true"></div>
-            <div class="player business-player" id="businessPlayer" aria-label="Business player">B</div>
-            <div class="player tech-player" id="techPlayer" aria-label="Technology player">T</div>
+            <div class="player business-player" id="businessPlayer" aria-label="Business player"><span>BUSINESS</span></div>
+            <div class="player tech-player" id="techPlayer" aria-label="Technology player"><span>TECH</span></div>
             <div class="charge-panel" id="chargePanel" hidden>
               <span>DUAL-SKILL CONNECTION</span>
               <div class="charge-track"><div id="chargeFill"></div></div>
@@ -71,14 +75,15 @@
       </div>
 
       <div class="game-complete" id="gameComplete" hidden>
-        <p class="game-kicker">SYSTEM ONLINE / INTRO COMPLETE</p>
-        <h2>Business helps me understand <em>what matters.</em><br>Technology helps me build <em>what works.</em></h2>
+        <p class="game-kicker">USEFUL THING™ MACHINE / ONLINE</p>
+        <h2>Business finds <em>what matters.</em><br>Technology makes it <em>work.</em></h2>
         <div class="unlock-grid">
           <div><span>BACKGROUND UNLOCKED</span><strong>Accounting → Computer Science → Software</strong><p>From Taiwan, now building in New York.</p></div>
           <div><span>WHAT I BUILD</span><strong>Applybook</strong><p>A calmer, connected job-search workspace.</p></div>
           <div><span>WHAT I BUILD</span><strong>The Mimir</strong><p>AI-powered tools for language learning.</p></div>
         </div>
         <a class="game-button complete-button" href="#home">Meet An <span>↓</span></a>
+        <p class="pixel-credit">Pixel art by <a href="https://kenney.nl/assets/pixel-platformer" target="_blank" rel="noopener noreferrer">Kenney</a> · CC0</p>
       </div>
     </div>
   </section>
