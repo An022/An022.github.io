@@ -9,7 +9,7 @@
   <link rel="icon" href="/images/portfolio-icon.svg">
   <link rel="stylesheet" href="/css/portfolio.css">
   <link rel="stylesheet" href="/css/portfolio-game-business-hint-v45-20260924.css">
-  <link rel="stylesheet" href="/css/portfolio-book-stories-v37-20260924.css">
+  <link rel="stylesheet" href="/css/portfolio-storybook-v38-20260924.css">
 </head>
 <body class="portfolio-locked">
   <a class="skip" id="accessSkip" href="#home">Skip game and view portfolio</a>
@@ -92,124 +92,171 @@
     </div>
   </section>
 
-  <header class="wrap header">
-    <a class="logo" href="#home">An Lee<span> / </span></a>
-    <nav aria-label="Main navigation">
-      <a href="#projects">Work</a>
-      <a href="#background">Path</a>
-      <a href="#about">About</a>
+  <header class="story-header">
+    <a class="story-logo" href="#home"><span class="story-logo-mark">A</span><span>An Lee · a small story</span></a>
+    <nav aria-label="Story shortcuts">
+      <a href="#home">Beginning</a>
+      <a href="#mimir">Building</a>
+      <a href="#epilogue">Now</a>
     </nav>
-    <a class="nav-resume" href="#contact">Connect ↘</a>
+    <a class="story-contact" href="#epilogue">Say hello <span>↗</span></a>
   </header>
 
-  <main id="main" class="profile-book" aria-label="An Lee profile book">
-    <section class="book-page is-active" id="home" data-book-page="Profile" aria-label="Profile, page 1 of 4">
-      <div class="book-page-inner wrap">
-        <p class="book-folio">PROFILE / 01</p>
-        <div class="hero book-hero">
-          <div class="hero-main">
-            <p class="eyebrow unlocked-label">HOME SIGNAL RESTORED / PROFILE UNLOCKED</p>
-            <h1>I follow the thread from a messy question to a system people can trust.</h1>
-            <p class="intro">I'm An, a New York–based software developer. At PwC, my curiosity meant tracing evidence until the story made sense. At NYU, it became learning how to redesign the system instead of working around it.</p>
-            <p class="intro intro-secondary">I am most at home between domains—asking the business question, understanding the human friction, and building the technical path forward.</p>
-            <div class="actions"><a class="button" href="#projects">See what I build →</a><a class="text-link" href="#background">Follow my path</a></div>
+  <main id="main" class="storybook" aria-label="The story of An Lee">
+    <section class="story-page is-active" id="home" data-story-page="Taiwan" aria-label="Taiwan, chapter 1 of 6">
+      <div class="story-page-inner">
+        <div class="story-copy">
+          <p class="story-kicker">CHAPTER ONE · TAIWAN</p>
+          <h1>The story began with numbers—and one question too many.</h1>
+          <p class="story-lede">I grew up in Taiwan and studied accounting because I liked structure. But the final number was never the most interesting part.</p>
+          <p>What held my attention was the story underneath it: why it moved, what it left out, and who needed to understand it.</p>
+          <blockquote>“If the story is true, the evidence should know it too.”</blockquote>
+        </div>
+        <figure class="story-art story-art--taiwan">
+          <svg viewBox="0 0 560 420" role="img" aria-label="A young woman in Taiwan follows a trail of numbers into a book">
+            <path class="story-wash" d="M104 322c-37-49-46-111-22-163 30-64 108-94 177-76 49 13 65 50 119 58 42 6 79 39 81 83 3 60-59 118-137 123-84 5-175 33-218-25z"/>
+            <path class="story-line" d="M53 342h454M164 326c28-9 56-9 84 0 28-9 56-9 84 0v-93c-28-9-56-9-84 0-28-9-56-9-84 0zM248 233v93"/>
+            <path class="story-accent" d="M112 84c12 13 25 18 39 15-6 13-4 27 6 41-16-2-29 4-38 17-1-16-8-28-21-36 15-6 20-19 14-37z"/>
+            <path class="story-line" d="M335 198c26-19 52-43 70-73M393 126l16-7-4 17M302 178c10-15 14-31 11-49M286 173c-4-15-13-28-27-38"/>
+            <text class="story-number" x="281" y="122">?</text><text class="story-number" x="419" y="112">7</text><text class="story-number" x="238" y="126">3</text>
+            <circle class="story-paper" cx="118" cy="247" r="37"/><path class="story-line" d="M93 252c13 4 24 1 33-10 10-13 24-15 42-7M116 216c4-20 1-38-10-55M106 163c-9 0-17-4-24-12M108 164c10-2 18-8 23-17"/>
+            <path class="story-accent" d="M197 264c15-13 33-19 51-18M280 246c19-1 35 5 51 18"/>
+          </svg>
+          <figcaption><span>TAIPEI, TAIWAN</span> Every trail begins with a question.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="story-page" id="pwc" data-story-page="PwC" aria-label="PwC, chapter 2 of 6" aria-hidden="true">
+      <div class="story-page-inner story-page-inner--reverse">
+        <div class="story-copy">
+          <p class="story-kicker">CHAPTER TWO · PwC</p>
+          <h2>At PwC, curiosity learned to become evidence.</h2>
+          <p class="story-lede">As a senior auditor in Taipei, I learned to stay patient inside complicated systems: follow the trail, test the control, and explain why an exception mattered.</p>
+          <p>Then I led a digital pilot and a cross-team effort to automate the work. The lesson was simple: careful thinking becomes more powerful when everyone can use it.</p>
+          <div class="story-stamps" aria-label="PwC outcomes"><span><strong>30+</strong> auditors</span><span><strong>35%</strong> faster</span><span><strong>40%</strong> fewer errors</span></div>
+        </div>
+        <figure class="story-art story-art--audit">
+          <svg viewBox="0 0 560 420" role="img" aria-label="Documents travel through a magnifying glass and become a clear path">
+            <path class="story-wash" d="M78 91h342c40 0 71 31 71 71v142c0 39-31 70-71 70H136c-64 0-103-70-74-126l64-122c11-22 30-35 52-35z"/>
+            <rect class="story-paper" x="105" y="84" width="182" height="236" rx="6"/><path class="story-line" d="M105 84h182v236H105zM139 130h110M139 168h110M139 206h73M139 244h94"/>
+            <path class="story-accent" d="m142 282 17 17 42-51"/>
+            <circle class="story-line" cx="340" cy="186" r="67"/><path class="story-line story-line--bold" d="m388 235 73 73"/>
+            <path class="story-accent" d="M310 188h22l13-28 21 49 14-21h30"/>
+            <path class="story-line" d="M314 320c24-19 54-28 90-28M397 292l-12-12M398 292l-5 17"/>
+          </svg>
+          <figcaption><span>THE AUDIT ROOM</span> Make the logic visible.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="story-page" id="turn" data-story-page="The turn" aria-label="The career turn, chapter 3 of 6" aria-hidden="true">
+      <div class="story-page-inner">
+        <div class="story-copy">
+          <p class="story-kicker">CHAPTER THREE · THE TURN</p>
+          <h2>Then a small piece of automation changed the road.</h2>
+          <p class="story-lede">When repetitive work disappeared, I noticed which part excited me most: I did not want to keep working around the process. I wanted to redesign it.</p>
+          <p>So I crossed an ocean and studied computer science at NYU. Accounting had taught me what reliable work requires; engineering gave me a way to build it into the system itself.</p>
+          <blockquote>New tools. The same habit of asking why.</blockquote>
+        </div>
+        <figure class="story-art story-art--turn">
+          <svg viewBox="0 0 560 420" role="img" aria-label="A path leaves Taiwan, crosses the ocean, and becomes code in New York">
+            <path class="story-wash" d="M63 275c43-39 92-57 146-54 57 3 89-15 123-62 43-59 122-62 166-7 43 53 20 134-46 157-75 25-149 45-231 36-74-8-123-30-158-70z"/>
+            <path class="story-line" d="M54 319c81-34 146-40 196-19 35 14 74 14 117-2 40-15 86-10 139 16"/>
+            <path class="story-accent" d="M122 287c42-80 104-119 188-119 50 0 90-22 119-67"/>
+            <path class="story-accent" d="m416 106 17-9-1 20"/>
+            <path class="story-line" d="M83 277c-6-32 11-54 45-66 26 12 39 31 40 57M106 211v-51M105 160l-28 19M105 160l29 19"/>
+            <path class="story-line" d="M391 286V151l42-28 42 28v135M377 286h112M412 170h42M412 199h42M412 228h42"/>
+            <path class="story-paper" d="M234 125h109v76H234z"/><path class="story-line" d="M234 125h109v76H234zM270 151l-15 12 15 12M307 151l15 12-15 12"/>
+          </svg>
+          <figcaption><span>TAIPEI → NEW YORK</span> The road changed; the thread stayed.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="story-page" id="mimir" data-story-page="The Mimir" aria-label="The Mimir, chapter 4 of 6" aria-hidden="true">
+      <div class="story-page-inner story-page-inner--reverse">
+        <div class="story-copy">
+          <p class="story-kicker">CHAPTER FOUR · THE MIMIR</p>
+          <h2>The questions became a product people could use.</h2>
+          <p class="story-lede">At The Mimir, I helped build a language-learning platform from scratch. It grew into a real place where thousands of learners practiced, listened, and tried again.</p>
+          <p>I improved performance and built AI-assisted speaking feedback—technology mattered most when it made the next attempt feel easier.</p>
+          <div class="story-stamps" aria-label="The Mimir outcomes"><span><strong>4,500+</strong> learners</span><span><strong>68 → 92</strong> Lighthouse</span><span><strong>70%</strong> less manual review</span></div>
+        </div>
+        <figure class="story-art story-art--mimir">
+          <svg viewBox="0 0 560 420" role="img" aria-label="A learner speaks into headphones and words become stars">
+            <path class="story-wash" d="M79 311c-33-43-39-103-12-151 33-58 105-84 171-62 40 13 64 43 105 41 62-2 116 46 117 106 1 59-49 111-116 114-107 5-216 14-265-48z"/>
+            <path class="story-line" d="M151 255c0-69 40-119 101-119s101 50 101 119M151 254v45c0 19 16 34 35 34h19v-85h-54M353 254v45c0 19-16 34-35 34h-19v-85h54"/>
+            <path class="story-line" d="M220 211c20-14 41-14 63 0M225 247c17 19 37 19 55 0"/>
+            <path class="story-accent" d="M381 137c17-23 43-31 76-25-10 19-7 36 8 53-32 0-55 11-70 34-3-25-16-42-40-53 12-1 20-4 26-9z"/>
+            <path class="story-line" d="M393 139h45M393 157h30M92 101c12 13 25 18 39 15-6 13-4 27 6 41-16-2-29 4-38 17-1-16-8-28-21-36 15-6 20-19 14-37z"/>
+            <path class="story-paper" d="M191 337h123l-12 33h-99z"/><path class="story-line" d="M191 337h123l-12 33h-99z"/>
+          </svg>
+          <figcaption><span>BUILD, LISTEN, REVISE</span> Feedback should invite another try.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="story-page" id="boc" data-story-page="BOC" aria-label="BOC, chapter 5 of 6" aria-hidden="true">
+      <div class="story-page-inner">
+        <div class="story-copy">
+          <p class="story-kicker">CHAPTER FIVE · BOC</p>
+          <h2>Then the systems became larger, quieter, and more consequential.</h2>
+          <p class="story-lede">At BOC, I moved nightly loan processing from SSIS into Python, FastAPI, Airflow, and Pandas—connecting different sources into one dependable flow.</p>
+          <p>On-call work taught me that reliability is not a diagram. It is a promise kept overnight, while everyone else is asleep.</p>
+          <div class="story-stamps" aria-label="BOC outcomes"><span><strong>5+</strong> data sources</span><span><strong>30K+</strong> records daily</span><span><strong>60%</strong> faster resolution</span></div>
+        </div>
+        <figure class="story-art story-art--systems">
+          <svg viewBox="0 0 560 420" role="img" aria-label="Five data streams become one reliable overnight pipeline">
+            <path class="story-wash" d="M67 114c31-54 101-78 164-53 45 18 75 59 121 61 63 2 118 48 119 110 2 72-73 129-153 117-69-11-130 16-192-16-77-40-99-148-59-219z"/>
+            <path class="story-line" d="M96 127h84M96 174h84M96 221h84M96 268h84M96 315h84"/>
+            <circle class="story-paper" cx="85" cy="127" r="11"/><circle class="story-paper" cx="85" cy="174" r="11"/><circle class="story-paper" cx="85" cy="221" r="11"/><circle class="story-paper" cx="85" cy="268" r="11"/><circle class="story-paper" cx="85" cy="315" r="11"/>
+            <path class="story-accent" d="M180 127c65 0 44 94 100 94M180 174c48 0 48 47 100 47M180 221h100M180 268c48 0 48-47 100-47M180 315c65 0 44-94 100-94"/>
+            <rect class="story-paper" x="280" y="180" width="98" height="82" rx="8"/><path class="story-line" d="M280 180h98v82h-98zM310 206h39M310 231h39"/>
+            <path class="story-accent" d="M378 221h84M447 207l15 14-15 14"/>
+            <circle class="story-line" cx="452" cy="117" r="42"/><path class="story-line" d="M452 91v28l19 12M433 303c0-27 21-48 48-48s48 21 48 48M455 300c5 10 14 15 26 15s21-5 26-15"/>
+          </svg>
+          <figcaption><span>AFTER MIDNIGHT</span> Trust is built when the system holds.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="story-page" id="epilogue" data-story-page="Still building" aria-label="Still building, chapter 6 of 6" aria-hidden="true">
+      <div class="story-page-inner story-page-inner--reverse">
+        <div class="story-copy story-copy--ending">
+          <p class="story-kicker">EPILOGUE · STILL BUILDING</p>
+          <h2>The ending is still being written.</h2>
+          <p class="story-lede">From Taiwan to New York, from audit to software, the thread was curiosity—not reinvention.</p>
+          <p>Today I work where business judgment and engineering meet. I trace the evidence, ask one more why, and turn recurring friction into systems people can trust.</p>
+          <p class="story-note">Applybook is one of those experiments: a calmer workspace for a job search that keeps changing.</p>
+          <div class="story-links" id="contact" aria-label="Connect with An Lee">
+            <a href="https://www.linkedin.com/in/an222/" target="_blank" rel="noopener noreferrer"><small>CONNECT</small><strong>LinkedIn</strong><span>↗</span></a>
+            <a href="https://github.com/An022" target="_blank" rel="noopener noreferrer"><small>EXPLORE</small><strong>GitHub</strong><span>↗</span></a>
+            <a href="https://applybook.applybook-app.workers.dev/" target="_blank" rel="noopener noreferrer"><small>TRY</small><strong>Applybook</strong><span>↗</span></a>
           </div>
-          <aside class="profile-panel thread-panel" aria-label="How I think and work">
-            <p class="eyebrow">WHAT PEOPLE NOTICE</p>
-            <strong class="why-how">CURIOUS <span>→</span> PRACTICAL</strong>
-            <p class="profile-caption">I like ambiguity at the beginning—as long as I can leave it clearer than I found it.</p>
-            <dl>
-              <div><dt>I ASK ONE MORE WHY</dt><dd>The first explanation is rarely the whole problem.</dd></div>
-              <div><dt>I MAKE THE LOGIC VISIBLE</dt><dd>People trust a system when they can understand how it behaves.</dd></div>
-            </dl>
-          </aside>
         </div>
-        <div class="signal-links book-signal-links" aria-label="Find An online">
-          <a class="signal-link" href="https://www.linkedin.com/in/an222/" target="_blank" rel="noopener noreferrer"><span>CONNECT</span><strong>LinkedIn</strong><b>↗</b></a>
-          <a class="signal-link" href="https://github.com/An022" target="_blank" rel="noopener noreferrer"><span>EXPLORE</span><strong>GitHub</strong><b>↗</b></a>
-          <a class="signal-link" href="https://applybook.applybook-app.workers.dev/" target="_blank" rel="noopener noreferrer"><span>PRODUCT</span><strong>Applybook</strong><b>↗</b></a>
-        </div>
+        <figure class="story-art story-art--ending">
+          <svg viewBox="0 0 560 420" role="img" aria-label="Two paths join and continue beyond the last page">
+            <path class="story-wash" d="M73 314c-31-53-24-119 18-162 41-43 103-46 150-18 42 25 74 14 116-10 60-34 132-2 145 64 13 67-46 130-118 135-117 8-266 66-311-9z"/>
+            <path class="story-line" d="M62 333h444"/>
+            <path class="story-accent" d="M96 280c48-4 86-20 116-49 29-29 64-44 105-44M96 131c54 7 88 35 102 84 9 32 49 58 119 78M317 187c58 0 101-28 130-84"/>
+            <circle class="story-paper" cx="96" cy="280" r="14"/><circle class="story-paper" cx="96" cy="131" r="14"/><circle class="story-paper" cx="317" cy="237" r="25"/>
+            <path class="story-line" d="M309 229h16M317 221v32M367 322V215h89v107M389 248h45M389 278h45M383 215c9-30 23-53 42-70 19 17 33 40 42 70"/>
+            <path class="story-accent" d="M444 104c12 13 25 18 39 15-6 13-4 27 6 41-16-2-29 4-38 17-1-16-8-28-21-36 15-6 20-19 14-37z"/>
+            <path class="story-line" d="M185 86c18-22 40-30 66-24M252 62l-7-10M252 62l-13 8"/>
+          </svg>
+          <figcaption><span>BUSINESS × TECHNOLOGY</span> One thread, still moving forward.</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="book-page" id="projects" data-book-page="Work" aria-label="Work, page 2 of 4" aria-hidden="true">
-      <div class="book-page-inner wrap">
-        <p class="book-folio">WHAT I BUILD / 02</p>
-        <div class="heading book-heading">
-          <div><p class="eyebrow">SELECTED PRODUCTS</p><h2>I build the tools<br>I wish existed.</h2></div>
-          <p>Most of my projects begin with the same thought:<br>there has to be a calmer way to do this.</p>
-        </div>
-        <div class="projects project-pair book-projects">
-          <article class="project featured-project">
-            <div class="project-top"><span class="eyebrow">PERSONAL PRODUCT / ACTIVE</span><span class="project-symbol" aria-hidden="true">01</span></div>
-            <h3>Applybook</h3>
-            <p class="project-deck">Built from my dislike of losing context.</p>
-            <p>A job search changes constantly, while most tools treat it like a static checklist. Applybook connects applications, follow-ups, stories, and different resume directions in one workspace.</p>
-            <dl class="project-details"><dt>WHAT IT SAYS ABOUT ME</dt><dd>I notice repeated friction, then keep shaping the workflow until it feels calmer and more human.</dd></dl>
-            <a class="project-link" href="https://applybook.applybook-app.workers.dev/" target="_blank" rel="noopener noreferrer">Open Applybook ↗</a>
-          </article>
-          <article class="project">
-            <div class="project-top"><span class="eyebrow">AI / LEARNING</span><span class="project-symbol" aria-hidden="true">02</span></div>
-            <h3>The Mimir</h3>
-            <p class="project-deck">Built around the courage to try again.</p>
-            <p>A production learning platform serving 4,500+ users, connecting interactive lessons, AI-assisted speaking feedback, and an on-demand dictionary.</p>
-            <dl class="project-details"><dt>WHAT IT SAYS ABOUT ME</dt><dd>I care about useful feedback: specific enough to guide the next attempt, gentle enough to invite it.</dd></dl>
-            <a class="project-link" href="https://github.com/An022" target="_blank" rel="noopener noreferrer">See related work ↗</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="book-page" id="background" data-book-page="Path" aria-label="Career path, page 3 of 4" aria-hidden="true">
-      <div class="book-page-inner wrap">
-        <p class="book-folio">THE PATH / 03</p>
-        <div class="heading book-heading career-heading">
-          <div><p class="eyebrow">AUDIT + TECHNOLOGY</p><h2>Curiosity changed the tools.<br>It did not change the way I think.</h2></div>
-          <p>Each step added a new way to turn<br>uncertainty into something useful.</p>
-        </div>
-        <div class="career-line" aria-label="Career path from audit to technology">
-          <article class="career-step"><span>NOTICE / 01</span><h3>PwC made me methodical.</h3><p>I learned to stay patient with complexity, follow evidence, and notice the exception that changes the story.</p></article>
-          <article class="career-step"><span>QUESTION / 02</span><h3>Automation made me restless.</h3><p>Once Python removed repetitive audit work, I stopped accepting “that is just the process” as an answer.</p></article>
-          <article class="career-step"><span>BUILD / 03</span><h3>NYU gave curiosity a toolkit.</h3><p>Computer science let me turn questions into APIs, data models, workflows, and products people could actually use.</p></article>
-          <article class="career-step"><span>CONNECT / 04</span><h3>Now I work between worlds.</h3><p>I translate business consequences into technical decisions—and technical tradeoffs back into language people can act on.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="book-page" id="about" data-book-page="About" aria-label="About and contact, page 4 of 4" aria-hidden="true">
-      <div class="book-page-inner wrap">
-        <p class="book-folio">ABOUT + CONTACT / 04</p>
-        <div class="heading book-heading">
-          <div><p class="eyebrow">HOW I SHOW UP</p><h2>Serious about the work.<br>Curious about almost everything.</h2></div>
-          <p>From Taiwan · Based in New York<br>Usually carrying one more question</p>
-        </div>
-        <div class="trait-grid book-traits">
-          <article><span>01 / CURIOUS</span><h3>I ask before I assume.</h3><p>Audit taught me to verify the story. Product work taught me to ask whose experience is missing from it.</p></article>
-          <article><span>02 / STEADY</span><h3>I stay calm inside complexity.</h3><p>I enjoy turning tangled rules, edge cases, and competing needs into a path other people can follow.</p></article>
-          <article><span>03 / HANDS-ON</span><h3>I learn by making.</h3><p>A useful prototype teaches me more than a perfect plan. I build, listen, revise, and make the next decision clearer.</p></article>
-        </div>
-        <section class="contact book-contact" id="contact">
-          <div><p class="eyebrow">KEEP IN TOUCH</p><h2>Bring me a messy question.</h2></div>
-          <div class="contact-actions contact-links">
-            <a href="https://www.linkedin.com/in/an222/" target="_blank" rel="noopener noreferrer"><span>Connect</span><strong>LinkedIn ↗</strong></a>
-            <a href="https://github.com/An022" target="_blank" rel="noopener noreferrer"><span>Explore</span><strong>GitHub ↗</strong></a>
-            <a href="https://applybook.applybook-app.workers.dev/" target="_blank" rel="noopener noreferrer"><span>Try the product</span><strong>Applybook ↗</strong></a>
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <nav class="book-controls" aria-label="Profile book navigation">
-      <button id="bookPrev" type="button" aria-label="Previous page">← <span>Previous</span></button>
-      <div class="book-progress"><span id="bookPageLabel">Profile</span><strong id="bookPageCount">01 / 04</strong><div class="book-dots" id="bookDots" aria-label="Choose a page"></div></div>
-      <button id="bookNext" type="button" aria-label="Next page"><span>Next</span> →</button>
+    <nav class="story-controls" aria-label="Story chapter navigation">
+      <button class="story-arrow" id="storyPrev" type="button" aria-label="Previous chapter">←</button>
+      <div class="story-chapters" id="storyChapters"></div>
+      <button class="story-arrow" id="storyNext" type="button" aria-label="Next chapter">→</button>
     </nav>
   </main>
-
-  <footer class="wrap footer book-footer">
-    <span>© 2026 An Lee</span><a href="mailto:leeans222@gmail.com">leeans222@gmail.com</a>
-  </footer>
   <script src="/js/portfolio-game-audit-room-v47-20260924.js"></script>
-  <script src="/js/portfolio-book-stories-v37-20260924.js"></script>
+  <script src="/js/portfolio-storybook-v38-20260924.js"></script>
 </body>
 </html>
