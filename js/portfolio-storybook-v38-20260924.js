@@ -82,6 +82,7 @@
   document.addEventListener('keydown', (event) => {
     if (document.body.classList.contains('portfolio-locked')) return;
     if (event.target.matches('input, textarea, select, [contenteditable="true"]')) return;
+    if (pages[currentPage]?.querySelector('[data-story-deck]')) return;
     if (event.key === 'ArrowRight' || event.key === 'PageDown') {
       event.preventDefault();
       showPage(currentPage + 1, true);
@@ -93,10 +94,18 @@
 
   book.addEventListener('pointerdown', (event) => {
     if (event.pointerType === 'mouse') return;
+    if (event.target.closest('[data-story-deck]')) {
+      pointerStartX = null;
+      return;
+    }
     pointerStartX = event.clientX;
   });
 
   book.addEventListener('pointerup', (event) => {
+    if (event.target.closest('[data-story-deck]')) {
+      pointerStartX = null;
+      return;
+    }
     if (pointerStartX === null) return;
     const distance = event.clientX - pointerStartX;
     pointerStartX = null;

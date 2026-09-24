@@ -1,0 +1,524 @@
+:root {
+  --deck-paper: #f6efe3;
+  --deck-paper-deep: #e9ddca;
+  --deck-ink: #312f2b;
+  --deck-muted: #776f65;
+  --deck-accent: #b66345;
+}
+
+.story-deck-page {
+  overflow: hidden;
+  background: var(--deck-paper);
+}
+
+.storybook[data-current-page="3"] .story-controls {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(100%);
+}
+
+.story-controls {
+  transition: opacity .3s ease, transform .4s ease;
+}
+
+.story-deck {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: var(--deck-ink);
+  background:
+    radial-gradient(circle at 72% 39%, rgba(182, 99, 69, .07), transparent 28%),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(49,47,43,.018) 40px),
+    var(--deck-paper);
+  outline: 0;
+  touch-action: pan-x pan-y;
+  user-select: none;
+}
+
+.story-deck::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border: 1px solid rgba(49,47,43,.09);
+  content: "";
+  pointer-events: none;
+}
+
+.story-deck__stage {
+  position: absolute;
+  inset: 0 0 76px;
+  overflow: hidden;
+}
+
+.story-scene {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(20px);
+  transition: opacity .52s ease, transform .62s cubic-bezier(.2,.7,.2,1);
+}
+
+.story-scene.is-active {
+  z-index: 2;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.story-scene__label {
+  position: absolute;
+  z-index: 12;
+  top: 24px;
+  left: clamp(24px, 5vw, 72px);
+  display: grid;
+  gap: 4px;
+}
+
+.story-scene__label span {
+  color: var(--deck-accent);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+
+.story-scene__label strong {
+  color: rgba(49,47,43,.62);
+  font-size: 10px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.story-scene__composition {
+  position: absolute;
+  inset: 62px clamp(30px, 7vw, 110px) 18px;
+}
+
+.story-scene__visual,
+.story-scene__copy {
+  position: absolute;
+  inset: 0;
+}
+
+.story-layer,
+.story-beat {
+  opacity: 0;
+  transition: opacity .48s ease, transform .58s cubic-bezier(.2,.72,.2,1);
+}
+
+.story-layer {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+  transform: translateY(14px) scale(.98);
+}
+
+.story-layer.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.story-beat {
+  position: absolute;
+  max-width: 560px;
+  margin: 0;
+  color: var(--deck-ink);
+  transform: translateY(15px);
+}
+
+.story-beat.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-beat--lead,
+.story-beat--follow {
+  font-size: clamp(18px, 1.8vw, 27px);
+  line-height: 1.45;
+}
+
+.story-beat--hero {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 6.2vw, 92px);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -.045em;
+}
+
+/* Scene 07 — The Problem */
+.story-scene--text-left-image-right .story-scene__visual {
+  left: 46%;
+}
+
+.story-scene--text-left-image-right .story-scene__copy {
+  right: 48%;
+}
+
+.story-scene--text-left-image-right .story-beat--lead {
+  top: 30%;
+  left: 3%;
+}
+
+.story-scene--text-left-image-right .story-beat--hero {
+  top: 42%;
+  left: 3%;
+  color: var(--deck-accent);
+}
+
+.story-layer--thinking {
+  right: 13%;
+  bottom: 8%;
+  width: min(31vw, 370px);
+  height: 75%;
+}
+
+.story-layer--laptop {
+  right: 38%;
+  bottom: 10%;
+  width: min(19vw, 230px);
+  height: 39%;
+}
+
+.story-layer--question {
+  top: 9%;
+  right: 10%;
+  width: min(9vw, 108px);
+  height: 22%;
+  transform: translateY(10px) rotate(-7deg) scale(.88);
+}
+
+.story-layer--question.is-visible {
+  transform: translateY(0) rotate(-7deg) scale(1);
+}
+
+/* Scene 08 — Start Over */
+.story-scene--center-character .story-scene__visual {
+  inset: 9% 24% 10%;
+}
+
+.story-layer--idle {
+  bottom: 3%;
+  left: 50%;
+  width: min(28vw, 330px);
+  height: 72%;
+  transform: translate(-50%, 14px) scale(.98);
+}
+
+.story-layer--idle.is-visible {
+  transform: translate(-50%, 0) scale(1);
+}
+
+.story-layer--suitcase {
+  right: 15%;
+  bottom: 7%;
+  width: min(13vw, 150px);
+  height: 38%;
+  transform: translateY(8px) scale(.82);
+}
+
+.story-layer--suitcase.is-visible {
+  transform: translateY(0) scale(1);
+}
+
+.story-scene--center-character .story-beat--center-top {
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 15px);
+  white-space: nowrap;
+}
+
+.story-scene--center-character .story-beat--center-top.is-visible {
+  transform: translate(-50%, 0);
+}
+
+.story-scene--center-character .story-beat--follow {
+  top: 17%;
+  left: 50%;
+  transform: translate(-50%, 15px);
+  white-space: nowrap;
+}
+
+.story-scene--center-character .story-beat--follow.is-visible {
+  transform: translate(-50%, 0);
+}
+
+.story-beat--started-over {
+  right: 0;
+  bottom: 11%;
+  left: 0;
+  max-width: none;
+  text-align: center;
+}
+
+/* Scene 09 — Leaving */
+.story-scene--split-world .story-scene__visual {
+  inset: 4% 2% 14%;
+}
+
+.story-layer--traveler {
+  bottom: 0;
+  left: 9%;
+  z-index: 5;
+  width: min(22vw, 270px);
+  height: 55%;
+}
+
+.story-layer--taiwan {
+  bottom: 2%;
+  left: 0;
+  width: min(31vw, 360px);
+  height: 72%;
+}
+
+.story-layer--route {
+  top: 30%;
+  left: 28%;
+  z-index: 1;
+  width: 43%;
+  height: 25%;
+  transform: scaleX(.6);
+  transform-origin: left center;
+}
+
+.story-layer--route.is-visible {
+  transform: scaleX(1);
+}
+
+.story-layer--airplane {
+  top: 24%;
+  left: 29%;
+  z-index: 4;
+  width: min(10vw, 120px);
+  height: 16%;
+  transform: translateY(12px) rotate(-8deg) scale(.98);
+}
+
+.story-layer--airplane.is-visible {
+  transform: translateY(0) rotate(-8deg) scale(1);
+}
+
+.story-layer--airplane.is-visible.is-travelled {
+  transform: translate(31vw, -6vh) rotate(5deg) scale(1);
+  transition-duration: .7s;
+}
+
+.story-layer--new-york {
+  right: 0;
+  bottom: 2%;
+  width: min(32vw, 385px);
+  height: 75%;
+}
+
+.story-beat--journey {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: none;
+  text-align: center;
+}
+
+.story-deck__finish {
+  position: absolute;
+  z-index: 20;
+  right: clamp(24px, 5vw, 72px);
+  bottom: 18px;
+  display: inline-flex;
+  gap: 24px;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid currentColor;
+  color: var(--deck-ink);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+
+.story-deck__finish.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.story-deck__finish span {
+  color: var(--deck-accent);
+  font-size: 18px;
+}
+
+.story-deck__hint {
+  position: absolute;
+  z-index: 8;
+  right: clamp(24px, 5vw, 72px);
+  top: 27px;
+  margin: 0;
+  color: rgba(49,47,43,.55);
+  font-family: Georgia, serif;
+  font-size: 11px;
+  font-style: italic;
+  transition: opacity .35s ease;
+}
+
+.story-deck__hint.is-hidden {
+  opacity: 0;
+}
+
+.story-deck__navigation {
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 140px minmax(240px, 420px) 140px;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  height: 76px;
+  padding: 0 26px;
+  border-top: 1px solid rgba(49,47,43,.15);
+  background: rgba(246,239,227,.94);
+}
+
+.story-deck__button {
+  display: inline-flex;
+  gap: 13px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border: 0;
+  color: var(--deck-ink);
+  background: transparent;
+  font: 750 10px/1 "Avenir Next", sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.story-deck__button:last-child {
+  border: 1px solid rgba(49,47,43,.7);
+  border-radius: 999px;
+}
+
+.story-deck__button:hover:not(:disabled) {
+  color: var(--deck-accent);
+}
+
+.story-deck__button:disabled {
+  opacity: .22;
+  cursor: default;
+}
+
+.story-deck__progress {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3px 12px;
+  align-items: center;
+  color: var(--deck-muted);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.story-deck__progress strong {
+  color: var(--deck-ink);
+  font-size: 9px;
+}
+
+.story-deck__progress i {
+  display: flex;
+  gap: 8px;
+  grid-column: 1 / -1;
+  align-items: center;
+}
+
+.story-deck__progress i::before,
+.story-deck__progress i::after {
+  flex: 1;
+  height: 1px;
+  background: rgba(49,47,43,.2);
+  content: "";
+}
+
+.story-deck__progress b {
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--deck-ink);
+  border-radius: 50%;
+}
+
+.story-deck__progress b.is-active {
+  background: var(--deck-accent);
+  border-color: var(--deck-accent);
+  transform: scale(1.35);
+}
+
+.story-deck__progress small {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+@media (max-height: 720px) and (min-width: 761px) {
+  .story-scene__composition { top: 50px; }
+  .story-beat--hero { font-size: clamp(44px, 5.5vw, 72px); }
+  .story-scene__label { top: 15px; }
+  .story-deck__hint { top: 18px; }
+}
+
+@media (max-width: 760px) {
+  .story-deck__stage { inset-bottom: 68px; }
+  .story-scene__label { top: 14px; left: 17px; }
+  .story-scene__composition { inset: 48px 17px 6px; }
+  .story-deck__hint { top: 17px; right: 17px; max-width: 150px; font-size: 9px; text-align: right; }
+  .story-scene__visual,
+  .story-scene--text-left-image-right .story-scene__visual,
+  .story-scene--text-left-image-right .story-scene__copy {
+    inset: 0;
+  }
+  .story-scene__visual { bottom: 41%; }
+  .story-scene__copy { top: 53%; }
+  .story-scene--text-left-image-right .story-beat--lead { top: 5%; left: 3%; }
+  .story-scene--text-left-image-right .story-beat--hero { top: 24%; left: 3%; }
+  .story-beat--lead, .story-beat--follow { font-size: 17px; }
+  .story-beat--hero { font-size: clamp(41px, 12vw, 58px); }
+  .story-layer--thinking { right: 13%; bottom: 0; width: 52%; height: 92%; }
+  .story-layer--laptop { right: 43%; bottom: 0; width: 36%; height: 46%; }
+  .story-layer--question { top: 1%; right: 7%; width: 16%; height: 25%; }
+  .story-scene--center-character .story-scene__visual { inset: 3% 9% 37%; }
+  .story-layer--idle { width: 61%; height: 78%; }
+  .story-layer--suitcase { right: 7%; width: 27%; height: 42%; }
+  .story-scene--center-character .story-beat--center-top { top: 55%; font-size: 16px; }
+  .story-scene--center-character .story-beat--follow { top: 63%; font-size: 16px; }
+  .story-beat--started-over { bottom: 3%; }
+  .story-scene--split-world .story-scene__visual { inset: 1% 0 24%; }
+  .story-layer--traveler { bottom: 0; left: 6%; width: 39%; height: 48%; }
+  .story-layer--taiwan { bottom: 0; left: 0; width: 47%; height: 67%; }
+  .story-layer--route { top: 36%; left: 30%; width: 40%; height: 17%; }
+  .story-layer--airplane { top: 29%; left: 30%; width: 19%; height: 14%; }
+  .story-layer--airplane.is-visible.is-travelled { transform: translate(39vw, -2vh) rotate(5deg) scale(1); }
+  .story-layer--new-york { right: 0; bottom: 0; width: 47%; height: 68%; }
+  .story-beat--journey { bottom: 3%; }
+  .story-deck__finish { right: 17px; bottom: 7px; }
+  .story-deck__navigation { grid-template-columns: 58px minmax(150px, 1fr) 78px; gap: 5px; height: 68px; padding: 0 9px; }
+  .story-deck__button { gap: 4px; padding: 9px 5px; font-size: 8px; }
+  .story-deck__button:first-child span { display: none; }
+  .story-deck__progress { gap: 2px 8px; font-size: 7px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-scene,
+  .story-layer,
+  .story-beat,
+  .story-deck__finish,
+  .story-deck__hint,
+  .story-layer--airplane.is-visible.is-travelled {
+    transition-duration: .01ms !important;
+  }
+}
