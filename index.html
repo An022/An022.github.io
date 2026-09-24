@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/css/portfolio.css">
   <link rel="stylesheet" href="/css/portfolio-game-business-hint-v45-20260924.css">
   <link rel="stylesheet" href="/css/portfolio-storybook-v38-20260924.css">
+  <link rel="stylesheet" href="/css/portfolio-detour-v39-20260924.css">
 </head>
 <body class="portfolio-locked">
   <a class="skip" id="accessSkip" href="#home">Skip game and view portfolio</a>
@@ -150,28 +151,84 @@
       </div>
     </section>
 
-    <section class="story-page" id="turn" data-story-page="The turn" aria-label="The career turn, chapter 3 of 6" aria-hidden="true">
-      <div class="story-page-inner">
-        <div class="story-copy">
-          <p class="story-kicker">CHAPTER THREE · THE TURN</p>
-          <h2>Then a small piece of automation changed the road.</h2>
-          <p class="story-lede">When repetitive work disappeared, I noticed which part excited me most: I did not want to keep working around the process. I wanted to redesign it.</p>
-          <p>So I crossed an ocean and studied computer science at NYU. Accounting had taught me what reliable work requires; engineering gave me a way to build it into the system itself.</p>
-          <blockquote>New tools. The same habit of asking why.</blockquote>
+    <section class="story-page detour-page" id="turn" data-story-page="The turn" aria-label="A Very Big Detour, chapter 3 of 6" aria-hidden="true">
+      <article class="story-chapter" data-story-chapter="detour">
+        <div class="detour-stage" aria-hidden="true">
+          <div class="detour-paper-grain"></div>
+          <p class="detour-running-title">CHAPTER THREE · A VERY BIG DETOUR</p>
+          <div class="detour-art-frame" data-story-art></div>
+          <div class="detour-route" aria-hidden="true"><span>TAIWAN</span><i></i><span>NEW YORK</span></div>
+          <div class="detour-progress" data-story-progress></div>
+          <span class="detour-scroll-cue">scroll to turn the page ↓</span>
         </div>
-        <figure class="story-art story-art--turn">
-          <svg viewBox="0 0 560 420" role="img" aria-label="A path leaves Taiwan, crosses the ocean, and becomes code in New York">
-            <path class="story-wash" d="M63 275c43-39 92-57 146-54 57 3 89-15 123-62 43-59 122-62 166-7 43 53 20 134-46 157-75 25-149 45-231 36-74-8-123-30-158-70z"/>
-            <path class="story-line" d="M54 319c81-34 146-40 196-19 35 14 74 14 117-2 40-15 86-10 139 16"/>
-            <path class="story-accent" d="M122 287c42-80 104-119 188-119 50 0 90-22 119-67"/>
-            <path class="story-accent" d="m416 106 17-9-1 20"/>
-            <path class="story-line" d="M83 277c-6-32 11-54 45-66 26 12 39 31 40 57M106 211v-51M105 160l-28 19M105 160l29 19"/>
-            <path class="story-line" d="M391 286V151l42-28 42 28v135M377 286h112M412 170h42M412 199h42M412 228h42"/>
-            <path class="story-paper" d="M234 125h109v76H234z"/><path class="story-line" d="M234 125h109v76H234zM270 151l-15 12 15 12M307 151l15 12-15 12"/>
-          </svg>
-          <figcaption><span>TAIPEI → NEW YORK</span> The road changed; the thread stayed.</figcaption>
-        </figure>
-      </div>
+
+        <div class="detour-scenes" data-story-scenes>
+          <section class="detour-scene is-important" data-scene="oldWorld" data-align="left">
+            <div class="detour-text">
+              <p>At some point,</p>
+              <h2>An realized she wanted<br>to build systems.</h2>
+              <p>There was just one problem.</p>
+              <strong>She didn't know how.</strong>
+            </div>
+          </section>
+
+          <section class="detour-scene detour-scene--center is-important" data-scene="suitcase" data-align="center">
+            <div class="detour-text">
+              <p>So An did something she would do<br>more than once in her life.</p>
+              <h2>She started over.</h2>
+            </div>
+          </section>
+
+          <section class="detour-scene" data-scene="route" data-align="right">
+            <div class="detour-text detour-text--pairs">
+              <p><span>Taiwan</span><b>→</b><span>New York.</span></p>
+              <p><span>Accounting</span><b>→</b><span>Computer Science.</span></p>
+              <p><span>Senior Associate</span><b>→</b><span>Student.</span></p>
+              <p class="detour-pair-last"><span>A familiar world</span><b>→</b><span>a completely unfamiliar one.</span></p>
+            </div>
+          </section>
+
+          <section class="detour-scene detour-scene--center" data-scene="newYork" data-align="center">
+            <div class="detour-text detour-text--spare">
+              <h2>No roadmap.</h2>
+              <h2>No guarantee.</h2>
+              <p>And definitely<br>no idea where this would lead.</p>
+            </div>
+          </section>
+
+          <section class="detour-scene is-important" data-scene="student" data-align="left">
+            <div class="detour-text">
+              <p>But An had learned something about herself:</p>
+              <h2>She doesn't need to know everything before she starts.</h2>
+              <p class="detour-emphasis">She just needs to learn<br><strong>fast enough to keep moving.</strong></p>
+            </div>
+          </section>
+
+          <section class="detour-scene" data-scene="adapting" data-align="right">
+            <div class="detour-text detour-text--rhythm">
+              <p>New city. <span>New language.</span></p>
+              <p>New field. <span>New rules.</span></p>
+              <ol aria-label="An's process"><li>Observe.</li><li>Learn.</li><li>Adapt.</li><li>Build.</li><li>Repeat.</li></ol>
+            </div>
+          </section>
+
+          <section class="detour-scene detour-scene--center is-important" data-scene="building" data-align="center">
+            <div class="detour-text">
+              <h2>Maybe starting over<br>isn't really starting from zero.</h2>
+              <p>You bring everything<br>you learned before.</p>
+              <p>You just learn<br>how to use it differently.</p>
+            </div>
+          </section>
+
+          <section class="detour-scene detour-scene--ending" data-scene="nextPage" data-align="left">
+            <div class="detour-text">
+              <p>And An was getting</p>
+              <h2>pretty good at that.</h2>
+              <a class="detour-next" href="#mimir">Turn the page <span>→</span></a>
+            </div>
+          </section>
+        </div>
+      </article>
     </section>
 
     <section class="story-page" id="mimir" data-story-page="The Mimir" aria-label="The Mimir, chapter 4 of 6" aria-hidden="true">
@@ -258,5 +315,6 @@
   </main>
   <script src="/js/portfolio-game-audit-room-v47-20260924.js"></script>
   <script src="/js/portfolio-storybook-v38-20260924.js"></script>
+  <script src="/js/portfolio-detour-v39-20260924.js"></script>
 </body>
 </html>
