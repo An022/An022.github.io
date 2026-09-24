@@ -15,7 +15,7 @@ window.AN_STORY_DETOUR = {
         {
           id: 'an-thinking',
           type: 'illustration',
-          asset: '/public/assets/story/characters/an-thinking.svg',
+          asset: '/public/assets/story/characters/an-thinking.webp',
           alt: 'An leans toward a laptop, thinking',
           visibleFrom: 0,
           className: 'story-layer--character story-layer--thinking'
@@ -23,7 +23,7 @@ window.AN_STORY_DETOUR = {
         {
           id: 'laptop',
           type: 'object',
-          asset: '/public/assets/story/objects/laptop.svg',
+          asset: '/public/assets/story/objects/laptop.webp',
           alt: 'A laptop',
           visibleFrom: 0,
           className: 'story-layer--laptop'
@@ -45,7 +45,7 @@ window.AN_STORY_DETOUR = {
         {
           id: 'question-mark',
           type: 'object',
-          asset: '/public/assets/story/objects/question-mark.svg',
+          asset: '/public/assets/story/objects/question-mark.webp',
           alt: 'A question mark appears beside An',
           visibleFrom: 3,
           className: 'story-layer--question'
@@ -62,7 +62,7 @@ window.AN_STORY_DETOUR = {
         {
           id: 'an-idle',
           type: 'illustration',
-          asset: '/public/assets/story/characters/an-idle.svg',
+          asset: '/public/assets/story/characters/an-idle.webp',
           alt: 'An stands alone, ready for an unfamiliar next step',
           visibleFrom: 0,
           className: 'story-layer--character story-layer--idle'
@@ -70,7 +70,7 @@ window.AN_STORY_DETOUR = {
         {
           id: 'suitcase',
           type: 'object',
-          asset: '/public/assets/story/objects/suitcase.svg',
+          asset: '/public/assets/story/objects/suitcase.webp',
           alt: 'A suitcase appears beside An',
           visibleFrom: 1,
           className: 'story-layer--suitcase'
@@ -108,7 +108,7 @@ window.AN_STORY_DETOUR = {
         {
           id: 'an-suitcase',
           type: 'illustration',
-          asset: '/public/assets/story/characters/an-suitcase.svg',
+          asset: '/public/assets/story/characters/an-suitcase.webp',
           alt: 'An waits with a backpack and suitcase',
           visibleFrom: 0,
           className: 'story-layer--character story-layer--traveler'
@@ -116,7 +116,7 @@ window.AN_STORY_DETOUR = {
         {
           id: 'taiwan',
           type: 'environment',
-          asset: '/public/assets/story/environments/taiwan.svg',
+          asset: '/public/assets/story/environments/taiwan.webp',
           alt: 'Taiwan',
           visibleFrom: 1,
           className: 'story-layer--taiwan'
@@ -124,7 +124,7 @@ window.AN_STORY_DETOUR = {
         {
           id: 'airplane',
           type: 'object',
-          asset: '/public/assets/story/objects/airplane.svg',
+          asset: '/public/assets/story/objects/airplane.webp',
           alt: 'An airplane travels from Taiwan toward New York',
           visibleFrom: 2,
           className: 'story-layer--airplane',
@@ -141,7 +141,7 @@ window.AN_STORY_DETOUR = {
         {
           id: 'new-york',
           type: 'environment',
-          asset: '/public/assets/story/environments/new-york.svg',
+          asset: '/public/assets/story/environments/new-york.webp',
           alt: 'New York',
           visibleFrom: 5,
           className: 'story-layer--new-york'
