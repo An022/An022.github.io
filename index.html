@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/css/portfolio.css">
   <link rel="stylesheet" href="/css/portfolio-game-business-hint-v45-20260924.css">
   <link rel="stylesheet" href="/css/portfolio-storybook-v38-20260924.css">
-  <link rel="stylesheet" href="/css/story-deck-v40-20260924.css">
+  <link rel="stylesheet" href="/css/story-deck-full-v41-20260924.css">
 </head>
 <body class="portfolio-locked">
   <a class="skip" id="accessSkip" href="#home">Skip game and view portfolio</a>
@@ -94,160 +94,31 @@
   </section>
 
   <header class="story-header">
-    <a class="story-logo" href="#home"><span class="story-logo-mark">A</span><span>An Lee · a small story</span></a>
+    <a class="story-logo" href="#once-upon-a-time" data-story-jump="once-upon-a-time"><span class="story-logo-mark">A</span><span>An Lee · an illustrated story</span></a>
     <nav aria-label="Story shortcuts">
-      <a href="#home">Beginning</a>
-      <a href="#mimir">Building</a>
-      <a href="#epilogue">Now</a>
+      <a href="#once-upon-a-time" data-story-jump="once-upon-a-time">Beginning</a>
+      <a href="#mimir" data-story-jump="mimir">What I build</a>
+      <a href="#next-page" data-story-jump="next-page">Now</a>
     </nav>
-    <a class="story-contact" href="#epilogue">Say hello <span>↗</span></a>
+    <a class="story-contact" href="#next-page" data-story-jump="next-page">Say hello <span>↗</span></a>
   </header>
 
-  <main id="main" class="storybook" aria-label="The story of An Lee">
-    <section class="story-page is-active" id="home" data-story-page="Taiwan" aria-label="Taiwan, chapter 1 of 6">
-      <div class="story-page-inner">
-        <div class="story-copy">
-          <p class="story-kicker">CHAPTER ONE · TAIWAN</p>
-          <h1>The story began with numbers—and one question too many.</h1>
-          <p class="story-lede">I grew up in Taiwan and studied accounting because I liked structure. But the final number was never the most interesting part.</p>
-          <p>What held my attention was the story underneath it: why it moved, what it left out, and who needed to understand it.</p>
-          <blockquote>“If the story is true, the evidence should know it too.”</blockquote>
-        </div>
-        <figure class="story-art story-art--taiwan">
-          <svg viewBox="0 0 560 420" role="img" aria-label="A young woman in Taiwan follows a trail of numbers into a book">
-            <path class="story-wash" d="M104 322c-37-49-46-111-22-163 30-64 108-94 177-76 49 13 65 50 119 58 42 6 79 39 81 83 3 60-59 118-137 123-84 5-175 33-218-25z"/>
-            <path class="story-line" d="M53 342h454M164 326c28-9 56-9 84 0 28-9 56-9 84 0v-93c-28-9-56-9-84 0-28-9-56-9-84 0zM248 233v93"/>
-            <path class="story-accent" d="M112 84c12 13 25 18 39 15-6 13-4 27 6 41-16-2-29 4-38 17-1-16-8-28-21-36 15-6 20-19 14-37z"/>
-            <path class="story-line" d="M335 198c26-19 52-43 70-73M393 126l16-7-4 17M302 178c10-15 14-31 11-49M286 173c-4-15-13-28-27-38"/>
-            <text class="story-number" x="281" y="122">?</text><text class="story-number" x="419" y="112">7</text><text class="story-number" x="238" y="126">3</text>
-            <circle class="story-paper" cx="118" cy="247" r="37"/><path class="story-line" d="M93 252c13 4 24 1 33-10 10-13 24-15 42-7M116 216c4-20 1-38-10-55M106 163c-9 0-17-4-24-12M108 164c10-2 18-8 23-17"/>
-            <path class="story-accent" d="M197 264c15-13 33-19 51-18M280 246c19-1 35 5 51 18"/>
-          </svg>
-          <figcaption><span>TAIPEI, TAIWAN</span> Every trail begins with a question.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="story-page" id="pwc" data-story-page="PwC" aria-label="PwC, chapter 2 of 6" aria-hidden="true">
-      <div class="story-page-inner story-page-inner--reverse">
-        <div class="story-copy">
-          <p class="story-kicker">CHAPTER TWO · PwC</p>
-          <h2>At PwC, curiosity learned to become evidence.</h2>
-          <p class="story-lede">As a senior auditor in Taipei, I learned to stay patient inside complicated systems: follow the trail, test the control, and explain why an exception mattered.</p>
-          <p>Then I led a digital pilot and a cross-team effort to automate the work. The lesson was simple: careful thinking becomes more powerful when everyone can use it.</p>
-          <div class="story-stamps" aria-label="PwC outcomes"><span><strong>30+</strong> auditors</span><span><strong>35%</strong> faster</span><span><strong>40%</strong> fewer errors</span></div>
-        </div>
-        <figure class="story-art story-art--audit">
-          <svg viewBox="0 0 560 420" role="img" aria-label="Documents travel through a magnifying glass and become a clear path">
-            <path class="story-wash" d="M78 91h342c40 0 71 31 71 71v142c0 39-31 70-71 70H136c-64 0-103-70-74-126l64-122c11-22 30-35 52-35z"/>
-            <rect class="story-paper" x="105" y="84" width="182" height="236" rx="6"/><path class="story-line" d="M105 84h182v236H105zM139 130h110M139 168h110M139 206h73M139 244h94"/>
-            <path class="story-accent" d="m142 282 17 17 42-51"/>
-            <circle class="story-line" cx="340" cy="186" r="67"/><path class="story-line story-line--bold" d="m388 235 73 73"/>
-            <path class="story-accent" d="M310 188h22l13-28 21 49 14-21h30"/>
-            <path class="story-line" d="M314 320c24-19 54-28 90-28M397 292l-12-12M398 292l-5 17"/>
-          </svg>
-          <figcaption><span>THE AUDIT ROOM</span> Make the logic visible.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="story-page story-deck-page" id="turn" data-story-page="The turn" aria-label="A Very Big Detour prototype, chapter 3 of 6" aria-hidden="true">
-      <div class="story-deck" id="detourStoryDeck" data-story-deck tabindex="0" aria-label="A Very Big Detour. Interactive story prototype.">
+  <main id="main" class="storybook storybook--full-deck" aria-label="The illustrated story of An Lee">
+    <section class="story-page story-deck-page is-active" id="home" data-story-page="An's Story" aria-label="An Lee's illustrated story">
+      <div class="story-deck" id="anStoryDeck" data-story-deck tabindex="0" aria-label="An's Story. Use scroll, arrow keys, Space, or the navigation buttons to continue.">
         <div class="story-deck__stage" data-deck-stage aria-live="polite"></div>
-        <p class="story-deck__hint" data-deck-hint>Scroll, press ↓, →, or Space to continue</p>
-        <nav class="story-deck__navigation" aria-label="Story prototype navigation">
+        <p class="story-deck__hint" data-deck-hint>Scroll, press ↓, →, or Space to turn the page</p>
+        <nav class="story-deck__navigation" aria-label="Story navigation">
           <button class="story-deck__button" type="button" data-deck-previous aria-label="Previous story beat">← <span>Previous</span></button>
           <div class="story-deck__progress" data-deck-progress aria-label="Story progress"></div>
-          <button class="story-deck__button" type="button" data-deck-next aria-label="Next story beat"><span>Next</span> →</button>
+          <button class="story-deck__button" type="button" data-deck-next aria-label="Next story beat"><span>Reveal</span> →</button>
         </nav>
       </div>
     </section>
-
-    <section class="story-page" id="mimir" data-story-page="The Mimir" aria-label="The Mimir, chapter 4 of 6" aria-hidden="true">
-      <div class="story-page-inner story-page-inner--reverse">
-        <div class="story-copy">
-          <p class="story-kicker">CHAPTER FOUR · THE MIMIR</p>
-          <h2>The questions became a product people could use.</h2>
-          <p class="story-lede">At The Mimir, I helped build a language-learning platform from scratch. It grew into a real place where thousands of learners practiced, listened, and tried again.</p>
-          <p>I improved performance and built AI-assisted speaking feedback—technology mattered most when it made the next attempt feel easier.</p>
-          <div class="story-stamps" aria-label="The Mimir outcomes"><span><strong>4,500+</strong> learners</span><span><strong>68 → 92</strong> Lighthouse</span><span><strong>70%</strong> less manual review</span></div>
-        </div>
-        <figure class="story-art story-art--mimir">
-          <svg viewBox="0 0 560 420" role="img" aria-label="A learner speaks into headphones and words become stars">
-            <path class="story-wash" d="M79 311c-33-43-39-103-12-151 33-58 105-84 171-62 40 13 64 43 105 41 62-2 116 46 117 106 1 59-49 111-116 114-107 5-216 14-265-48z"/>
-            <path class="story-line" d="M151 255c0-69 40-119 101-119s101 50 101 119M151 254v45c0 19 16 34 35 34h19v-85h-54M353 254v45c0 19-16 34-35 34h-19v-85h54"/>
-            <path class="story-line" d="M220 211c20-14 41-14 63 0M225 247c17 19 37 19 55 0"/>
-            <path class="story-accent" d="M381 137c17-23 43-31 76-25-10 19-7 36 8 53-32 0-55 11-70 34-3-25-16-42-40-53 12-1 20-4 26-9z"/>
-            <path class="story-line" d="M393 139h45M393 157h30M92 101c12 13 25 18 39 15-6 13-4 27 6 41-16-2-29 4-38 17-1-16-8-28-21-36 15-6 20-19 14-37z"/>
-            <path class="story-paper" d="M191 337h123l-12 33h-99z"/><path class="story-line" d="M191 337h123l-12 33h-99z"/>
-          </svg>
-          <figcaption><span>BUILD, LISTEN, REVISE</span> Feedback should invite another try.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="story-page" id="boc" data-story-page="BOC" aria-label="BOC, chapter 5 of 6" aria-hidden="true">
-      <div class="story-page-inner">
-        <div class="story-copy">
-          <p class="story-kicker">CHAPTER FIVE · BOC</p>
-          <h2>Then the systems became larger, quieter, and more consequential.</h2>
-          <p class="story-lede">At BOC, I moved nightly loan processing from SSIS into Python, FastAPI, Airflow, and Pandas—connecting different sources into one dependable flow.</p>
-          <p>On-call work taught me that reliability is not a diagram. It is a promise kept overnight, while everyone else is asleep.</p>
-          <div class="story-stamps" aria-label="BOC outcomes"><span><strong>5+</strong> data sources</span><span><strong>30K+</strong> records daily</span><span><strong>60%</strong> faster resolution</span></div>
-        </div>
-        <figure class="story-art story-art--systems">
-          <svg viewBox="0 0 560 420" role="img" aria-label="Five data streams become one reliable overnight pipeline">
-            <path class="story-wash" d="M67 114c31-54 101-78 164-53 45 18 75 59 121 61 63 2 118 48 119 110 2 72-73 129-153 117-69-11-130 16-192-16-77-40-99-148-59-219z"/>
-            <path class="story-line" d="M96 127h84M96 174h84M96 221h84M96 268h84M96 315h84"/>
-            <circle class="story-paper" cx="85" cy="127" r="11"/><circle class="story-paper" cx="85" cy="174" r="11"/><circle class="story-paper" cx="85" cy="221" r="11"/><circle class="story-paper" cx="85" cy="268" r="11"/><circle class="story-paper" cx="85" cy="315" r="11"/>
-            <path class="story-accent" d="M180 127c65 0 44 94 100 94M180 174c48 0 48 47 100 47M180 221h100M180 268c48 0 48-47 100-47M180 315c65 0 44-94 100-94"/>
-            <rect class="story-paper" x="280" y="180" width="98" height="82" rx="8"/><path class="story-line" d="M280 180h98v82h-98zM310 206h39M310 231h39"/>
-            <path class="story-accent" d="M378 221h84M447 207l15 14-15 14"/>
-            <circle class="story-line" cx="452" cy="117" r="42"/><path class="story-line" d="M452 91v28l19 12M433 303c0-27 21-48 48-48s48 21 48 48M455 300c5 10 14 15 26 15s21-5 26-15"/>
-          </svg>
-          <figcaption><span>AFTER MIDNIGHT</span> Trust is built when the system holds.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="story-page" id="epilogue" data-story-page="Still building" aria-label="Still building, chapter 6 of 6" aria-hidden="true">
-      <div class="story-page-inner story-page-inner--reverse">
-        <div class="story-copy story-copy--ending">
-          <p class="story-kicker">EPILOGUE · STILL BUILDING</p>
-          <h2>The ending is still being written.</h2>
-          <p class="story-lede">From Taiwan to New York, from audit to software, the thread was curiosity—not reinvention.</p>
-          <p>Today I work where business judgment and engineering meet. I trace the evidence, ask one more why, and turn recurring friction into systems people can trust.</p>
-          <p class="story-note">Applybook is one of those experiments: a calmer workspace for a job search that keeps changing.</p>
-          <div class="story-links" id="contact" aria-label="Connect with An Lee">
-            <a href="https://www.linkedin.com/in/an222/" target="_blank" rel="noopener noreferrer"><small>CONNECT</small><strong>LinkedIn</strong><span>↗</span></a>
-            <a href="https://github.com/An022" target="_blank" rel="noopener noreferrer"><small>EXPLORE</small><strong>GitHub</strong><span>↗</span></a>
-            <a href="https://applybook.applybook-app.workers.dev/" target="_blank" rel="noopener noreferrer"><small>TRY</small><strong>Applybook</strong><span>↗</span></a>
-          </div>
-        </div>
-        <figure class="story-art story-art--ending">
-          <svg viewBox="0 0 560 420" role="img" aria-label="Two paths join and continue beyond the last page">
-            <path class="story-wash" d="M73 314c-31-53-24-119 18-162 41-43 103-46 150-18 42 25 74 14 116-10 60-34 132-2 145 64 13 67-46 130-118 135-117 8-266 66-311-9z"/>
-            <path class="story-line" d="M62 333h444"/>
-            <path class="story-accent" d="M96 280c48-4 86-20 116-49 29-29 64-44 105-44M96 131c54 7 88 35 102 84 9 32 49 58 119 78M317 187c58 0 101-28 130-84"/>
-            <circle class="story-paper" cx="96" cy="280" r="14"/><circle class="story-paper" cx="96" cy="131" r="14"/><circle class="story-paper" cx="317" cy="237" r="25"/>
-            <path class="story-line" d="M309 229h16M317 221v32M367 322V215h89v107M389 248h45M389 278h45M383 215c9-30 23-53 42-70 19 17 33 40 42 70"/>
-            <path class="story-accent" d="M444 104c12 13 25 18 39 15-6 13-4 27 6 41-16-2-29 4-38 17-1-16-8-28-21-36 15-6 20-19 14-37z"/>
-            <path class="story-line" d="M185 86c18-22 40-30 66-24M252 62l-7-10M252 62l-13 8"/>
-          </svg>
-          <figcaption><span>BUSINESS × TECHNOLOGY</span> One thread, still moving forward.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <nav class="story-controls" aria-label="Story chapter navigation">
-      <button class="story-arrow" id="storyPrev" type="button" aria-label="Previous chapter">←</button>
-      <div class="story-chapters" id="storyChapters"></div>
-      <button class="story-arrow" id="storyNext" type="button" aria-label="Next chapter">→</button>
-    </nav>
   </main>
   <script src="/js/portfolio-game-audit-room-v47-20260924.js"></script>
   <script src="/js/portfolio-storybook-v38-20260924.js"></script>
-  <script src="/js/story-data-detour-v40-20260924.js"></script>
-  <script src="/js/story-deck-engine-v40-20260924.js"></script>
+  <script src="/js/story-data-full-v41-20260924.js"></script>
+  <script src="/js/story-deck-engine-v41-20260924.js"></script>
 </body>
 </html>
