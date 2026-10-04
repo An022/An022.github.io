@@ -1,0 +1,522 @@
+/*
+ * Storybook bridge
+ * Keeps the pixel puzzles intact while presenting the entire playable prologue
+ * in the same paper, ink, and editorial system as An's illustrated story.
+ */
+
+body.portfolio-locked {
+  --game-paper: var(--book-paper, #f6ecdc);
+  --game-paper-deep: var(--book-paper-deep, #eadbc5);
+  --game-ink: var(--book-ink, #342d28);
+  --game-muted: var(--book-muted, #7b6e61);
+  --game-accent: var(--book-orange, #ee8a4b);
+  --game-line: var(--book-line, rgba(52, 45, 40, .2));
+  background: var(--game-paper);
+  color: var(--game-ink);
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", sans-serif;
+}
+
+body.portfolio-locked .game-shell {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+  padding: clamp(10px, 1.5vw, 22px);
+  background:
+    radial-gradient(circle at 14% 18%, rgba(238, 138, 75, .09), transparent 25%),
+    repeating-linear-gradient(0deg, rgba(52, 45, 40, .014) 0 1px, transparent 1px 5px),
+    var(--game-paper);
+  color: var(--game-ink);
+}
+
+body.portfolio-locked .game-shell::before {
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 49.9%, rgba(52, 45, 40, .035) 50%, transparent 50.1%),
+    radial-gradient(circle at 50% 112%, rgba(121, 78, 43, .09), transparent 42%);
+  content: "";
+  pointer-events: none;
+}
+
+body.portfolio-locked .game-frame {
+  position: relative;
+  width: min(1380px, 100%);
+  height: calc(100svh - clamp(20px, 3vw, 44px));
+  min-height: 0;
+  border: 1px solid rgba(52, 45, 40, .28);
+  border-radius: 2px;
+  background: rgba(246, 236, 220, .86);
+  box-shadow:
+    inset 0 0 70px rgba(79, 55, 34, .045),
+    0 18px 55px rgba(72, 48, 27, .11);
+}
+
+body.portfolio-locked .game-frame::after {
+  position: absolute;
+  z-index: 20;
+  inset: 8px;
+  border: 1px solid rgba(52, 45, 40, .1);
+  content: "";
+  pointer-events: none;
+}
+
+body.portfolio-locked .game-topbar {
+  position: relative;
+  z-index: 22;
+  min-height: 64px;
+  padding-inline: clamp(18px, 3vw, 42px);
+  border-bottom: 1px solid var(--game-line);
+  background: rgba(246, 236, 220, .92);
+  color: var(--game-muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+body.portfolio-locked .game-brand {
+  color: var(--game-ink);
+  font-size: 11px;
+}
+
+body.portfolio-locked .game-brand::before {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  margin-right: 10px;
+  background: var(--game-accent);
+  content: "";
+  vertical-align: middle;
+}
+
+body.portfolio-locked .game-topbar a {
+  color: var(--game-ink);
+  border-bottom: 1px solid transparent;
+}
+
+body.portfolio-locked .game-topbar a:hover,
+body.portfolio-locked .game-topbar a:focus-visible {
+  border-bottom-color: var(--game-accent);
+  color: var(--game-accent);
+}
+
+body.portfolio-locked .game-intro,
+body.portfolio-locked .game-complete {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(90deg, rgba(246, 236, 220, .92), rgba(246, 236, 220, .7) 52%, rgba(246, 236, 220, .9)),
+    url('/public/assets/story/backgrounds/background-systems.webp') center / cover no-repeat;
+}
+
+body.portfolio-locked .game-intro::after,
+body.portfolio-locked .game-complete::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 68%, rgba(246, 236, 220, .64));
+  content: "";
+  pointer-events: none;
+}
+
+body.portfolio-locked .game-intro {
+  height: calc(100% - 64px);
+  min-height: 0;
+  padding: clamp(14px, 2.5vw, 30px) clamp(24px, 7vw, 100px) 20px;
+}
+
+body.portfolio-locked .game-kicker {
+  margin-bottom: 10px;
+  color: var(--game-accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+body.portfolio-locked .game-intro h1,
+body.portfolio-locked .game-complete h2,
+body.portfolio-locked .mission-panel h2 {
+  color: var(--game-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+body.portfolio-locked .game-intro h1 {
+  max-width: 860px;
+  margin-bottom: 10px;
+  font-size: clamp(2.8rem, 5.2vw, 5rem);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+body.portfolio-locked .game-intro h1 em,
+body.portfolio-locked .game-complete h2 em {
+  color: var(--game-accent);
+  font-style: italic;
+}
+
+body.portfolio-locked .game-intro > p:not(.game-kicker, .game-note) {
+  max-width: 630px;
+  color: var(--game-muted);
+  font-size: clamp(.94rem, 1.2vw, 1.06rem);
+  line-height: 1.58;
+}
+
+body.portfolio-locked .incident-card {
+  width: min(620px, 100%);
+  margin-top: 10px;
+  padding: 9px 4px;
+  border: 0;
+  border-block: 1px solid var(--game-line);
+  background: rgba(246, 236, 220, .62);
+  box-shadow: none;
+}
+
+body.portfolio-locked .incident-card::before {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid var(--game-accent);
+  color: var(--game-accent);
+  content: "✦";
+  font-family: Georgia, serif;
+  font-size: 18px;
+}
+
+body.portfolio-locked .incident-sprite { display: none; }
+
+body.portfolio-locked .incident-card strong {
+  color: var(--game-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: .88rem;
+  font-weight: 600;
+}
+
+body.portfolio-locked .incident-card small,
+body.portfolio-locked .control-preview small,
+body.portfolio-locked .game-note {
+  color: var(--game-muted);
+}
+
+body.portfolio-locked .game-note {
+  margin-top: 7px;
+  font-size: .7rem;
+}
+
+body.portfolio-locked .control-preview {
+  gap: clamp(18px, 4vw, 54px);
+  margin-block: 13px 15px;
+}
+
+body.portfolio-locked .hand-label {
+  color: var(--game-muted);
+  font-weight: 800;
+}
+
+body.portfolio-locked .business-label::before,
+body.portfolio-locked .tech-label::before {
+  color: var(--game-accent);
+  content: "01 · ";
+}
+
+body.portfolio-locked .tech-label::before { content: "02 · "; }
+
+body.portfolio-locked kbd,
+body.portfolio-locked .touch-pad button {
+  border: 1px solid rgba(52, 45, 40, .32);
+  border-bottom-width: 3px;
+  border-radius: 3px;
+  background: rgba(255, 251, 244, .82);
+  color: var(--game-ink);
+  box-shadow: 0 3px 0 rgba(52, 45, 40, .06);
+  font-family: "Avenir Next", Avenir, sans-serif;
+}
+
+body.portfolio-locked .control-plus { color: var(--game-accent); }
+
+body.portfolio-locked .game-button {
+  min-width: 226px;
+  border: 1px solid var(--game-ink);
+  border-radius: 2px;
+  background: var(--game-ink);
+  color: var(--game-paper);
+  box-shadow: 5px 5px 0 rgba(238, 138, 75, .34);
+  font-family: "Avenir Next", Avenir, sans-serif;
+  letter-spacing: .02em;
+  transition: color .2s ease, background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+body.portfolio-locked .game-button:hover,
+body.portfolio-locked .game-button:focus-visible {
+  background: var(--game-accent);
+  color: #fffaf2;
+  box-shadow: 2px 2px 0 rgba(52, 45, 40, .16);
+  transform: translate(2px, 2px);
+}
+
+body.portfolio-locked .game-play {
+  height: calc(100% - 64px);
+  min-height: 0;
+  grid-template-columns: minmax(255px, .67fr) minmax(520px, 1.7fr);
+  gap: clamp(28px, 4vw, 62px);
+  padding: clamp(28px, 4vw, 56px);
+  background:
+    linear-gradient(90deg, rgba(246, 236, 220, .97), rgba(246, 236, 220, .92)),
+    repeating-linear-gradient(0deg, rgba(52, 45, 40, .025) 0 1px, transparent 1px 5px);
+}
+
+body.portfolio-locked .mission-panel {
+  position: relative;
+  padding: 6px 0 6px clamp(16px, 2vw, 25px);
+  border-left: 3px solid var(--game-accent);
+}
+
+body.portfolio-locked .mission-panel h2 {
+  margin-bottom: 14px;
+  font-size: clamp(2rem, 3.3vw, 3.15rem);
+  line-height: 1.06;
+  letter-spacing: -.035em;
+}
+
+body.portfolio-locked .mission-panel > p:not(.game-kicker) {
+  color: var(--game-muted);
+  line-height: 1.68;
+}
+
+body.portfolio-locked .part-tray {
+  gap: 4px;
+  margin-block: 22px;
+}
+
+body.portfolio-locked .part-slot,
+body.portfolio-locked .game-play[data-mode="sokoban"] .part-slot {
+  min-height: 38px;
+  padding: 7px 3px;
+  border: 0;
+  border-bottom: 1px solid var(--game-line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--game-muted);
+  box-shadow: none;
+}
+
+body.portfolio-locked .part-slot.is-current,
+body.portfolio-locked .game-play[data-mode="sokoban"] .part-slot.is-current {
+  border-bottom-color: var(--game-accent);
+  background: rgba(238, 138, 75, .06);
+  color: var(--game-ink);
+}
+
+body.portfolio-locked .part-slot.collected,
+body.portfolio-locked .game-play[data-mode="sokoban"] .part-slot.collected {
+  border-color: rgba(52, 45, 40, .3);
+  background: transparent;
+  color: var(--game-ink);
+}
+
+body.portfolio-locked .part-slot b,
+body.portfolio-locked .part-slot.collected b {
+  color: var(--game-accent);
+}
+
+body.portfolio-locked .part-slot small,
+body.portfolio-locked .active-controls,
+body.portfolio-locked .touch-pad > span {
+  color: var(--game-muted);
+}
+
+body.portfolio-locked .reset-level {
+  border-bottom-color: rgba(52, 45, 40, .28);
+  color: var(--game-muted);
+  font-family: "Avenir Next", Avenir, sans-serif;
+}
+
+body.portfolio-locked .reset-level:hover,
+body.portfolio-locked .reset-level:focus-visible {
+  border-color: var(--game-accent);
+  color: var(--game-accent);
+}
+
+body.portfolio-locked .arena-column {
+  padding: clamp(8px, 1.2vw, 15px);
+  border: 1px solid rgba(52, 45, 40, .2);
+  background: rgba(255, 251, 244, .52);
+  box-shadow: 7px 8px 0 rgba(52, 45, 40, .055);
+}
+
+body.portfolio-locked .game-arena,
+body.portfolio-locked .game-arena[data-mode="sokoban"],
+body.portfolio-locked .game-arena[data-mode="lasermaze"],
+body.portfolio-locked .game-arena[data-mode="fusion"] {
+  border: 2px solid var(--game-ink);
+  border-radius: 1px;
+  box-shadow: 5px 5px 0 rgba(52, 45, 40, .13), inset 0 0 50px rgba(0, 0, 0, .28);
+}
+
+body.portfolio-locked .game-arena:focus-visible {
+  outline: 3px solid var(--game-accent);
+  outline-offset: 5px;
+}
+
+body.portfolio-locked .game-status {
+  min-height: 40px;
+  margin: 14px 0 0;
+  padding: 8px 2px 4px;
+  border: 0;
+  border-top: 1px solid var(--game-line);
+  background: transparent;
+  color: var(--game-muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: .82rem;
+  font-style: italic;
+}
+
+body.portfolio-locked .game-complete {
+  height: calc(100% - 64px);
+  min-height: 0;
+  padding: clamp(42px, 6vw, 82px);
+}
+
+body.portfolio-locked .game-complete h2 {
+  max-width: 960px;
+  font-size: clamp(2.2rem, 4.4vw, 4.15rem);
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+
+body.portfolio-locked .unlock-grid {
+  gap: 0;
+  margin-block: clamp(30px, 5vw, 48px) 32px;
+  border-block: 1px solid var(--game-line);
+}
+
+body.portfolio-locked .unlock-grid > div {
+  padding: 20px clamp(14px, 2vw, 28px);
+  border: 0;
+  border-right: 1px solid var(--game-line);
+  border-radius: 0;
+  background: rgba(246, 236, 220, .54);
+}
+
+body.portfolio-locked .unlock-grid > div:last-child { border-right: 0; }
+
+body.portfolio-locked .unlock-grid span {
+  color: var(--game-accent);
+  font-weight: 800;
+}
+
+body.portfolio-locked .unlock-grid strong {
+  color: var(--game-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+body.portfolio-locked .unlock-grid p,
+body.portfolio-locked .pixel-credit,
+body.portfolio-locked .pixel-credit a {
+  color: var(--game-muted);
+}
+
+@media (max-width: 850px) {
+  body.portfolio-locked .game-shell {
+    height: auto;
+    min-height: 100svh;
+    overflow: auto;
+  }
+
+  body.portfolio-locked .game-frame {
+    height: auto;
+    min-height: calc(100svh - clamp(20px, 3vw, 44px));
+  }
+
+  body.portfolio-locked .game-play {
+    height: auto;
+    min-height: calc(100svh - 86px);
+    grid-template-columns: 1fr;
+    padding: 26px clamp(18px, 4vw, 34px) 40px;
+  }
+
+  body.portfolio-locked .mission-panel {
+    padding-left: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  body.portfolio-locked .game-shell { padding: 0; }
+
+  body.portfolio-locked .game-frame {
+    min-height: 100svh;
+    border: 0;
+    box-shadow: none;
+  }
+
+  body.portfolio-locked .game-frame::after { inset: 5px; }
+
+  body.portfolio-locked .game-topbar {
+    min-height: 58px;
+    padding-inline: 16px;
+  }
+
+  body.portfolio-locked .game-brand::before {
+    width: 14px;
+    margin-right: 7px;
+  }
+
+  body.portfolio-locked .game-intro {
+    height: auto;
+    min-height: calc(100svh - 58px);
+    padding: 30px 20px 38px;
+  }
+
+  body.portfolio-locked .game-intro h1 {
+    font-size: clamp(2.85rem, 14vw, 4.4rem);
+  }
+
+  body.portfolio-locked .incident-card {
+    grid-template-columns: 42px 1fr;
+    gap: 12px;
+  }
+
+  body.portfolio-locked .control-preview { gap: 10px; }
+
+  body.portfolio-locked .game-play {
+    min-height: calc(100svh - 58px);
+    padding: 24px 14px 34px;
+  }
+
+  body.portfolio-locked .mission-panel { padding-left: 14px; }
+
+  body.portfolio-locked .arena-column {
+    padding: 6px;
+    box-shadow: 4px 5px 0 rgba(52, 45, 40, .055);
+  }
+
+  body.portfolio-locked .game-arena,
+  body.portfolio-locked .game-arena[data-mode="sokoban"],
+  body.portfolio-locked .game-arena[data-mode="lasermaze"],
+  body.portfolio-locked .game-arena[data-mode="fusion"] {
+    box-shadow: 3px 3px 0 rgba(52, 45, 40, .13), inset 0 0 38px rgba(0, 0, 0, .25);
+  }
+
+  body.portfolio-locked .game-complete {
+    height: auto;
+    min-height: calc(100svh - 58px);
+    padding: 36px 20px;
+  }
+
+  body.portfolio-locked .unlock-grid { grid-template-columns: 1fr; }
+
+  body.portfolio-locked .unlock-grid > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--game-line);
+  }
+
+  body.portfolio-locked .unlock-grid > div:last-child { border-bottom: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.portfolio-locked .game-button { transition: none; }
+}
