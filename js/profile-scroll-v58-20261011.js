@@ -7,6 +7,7 @@
   const element = (sceneData, id) => sceneData?.elements.find((item) => item.id === id);
   const text = (sceneData, id) => element(sceneData, id)?.content || '';
   const items = (sceneData, id) => element(sceneData, id)?.items || [];
+  const headline = (value) => value.split('\n').map((line) => line.replace(/[.。]+\s*$/, '')).join('\n');
 
   const make = (tag, className, content) => {
     const node = document.createElement(tag);
@@ -45,7 +46,7 @@
   const hero = makeSection(heroData, 'hero');
   const heroInner = make('div', 'profile-scroll__hero-inner');
   heroInner.append(make('p', 'profile-scroll__eyebrow', text(heroData, 'hero-kicker')));
-  const heroTitle = make('h1', 'profile-scroll__hero-title', text(heroData, 'hero-title'));
+  const heroTitle = make('h1', 'profile-scroll__hero-title', headline(text(heroData, 'hero-title')));
   heroTitle.id = `profile-title-${heroData.id}`;
   heroInner.append(heroTitle, make('p', 'profile-scroll__foundation', text(heroData, 'hero-copy')));
   const lenses = make('div', 'profile-scroll__lenses');
@@ -66,7 +67,7 @@
   const businessGrid = make('div', 'profile-scroll__split');
   const businessCopy = make('div', 'profile-scroll__copy');
   businessCopy.append(make('p', 'profile-scroll__eyebrow', text(businessData, 'business-kicker')));
-  const businessTitle = make('h2', 'profile-scroll__title', text(businessData, 'business-title'));
+  const businessTitle = make('h2', 'profile-scroll__title', headline(text(businessData, 'business-title')));
   businessTitle.id = `profile-title-${businessData.id}`;
   businessCopy.append(businessTitle, make('p', 'profile-scroll__body', text(businessData, 'business-copy')));
   const judgment = make('div', 'profile-scroll__wordmark', 'JUDGMENT');
@@ -80,7 +81,7 @@
   const techGrid = make('div', 'profile-scroll__split profile-scroll__split--tech');
   const techCopy = make('div', 'profile-scroll__copy');
   techCopy.append(make('p', 'profile-scroll__eyebrow', text(techData, 'tech-kicker')));
-  const techTitle = make('h2', 'profile-scroll__title', text(techData, 'tech-title'));
+  const techTitle = make('h2', 'profile-scroll__title', headline(text(techData, 'tech-title')));
   techTitle.id = `profile-title-${techData.id}`;
   techCopy.append(techTitle, make('p', 'profile-scroll__body', text(techData, 'tech-copy')));
   const system = make('div', 'profile-scroll__system');
@@ -99,7 +100,7 @@
   const workGrid = make('div', 'profile-scroll__work-grid');
   const workCopy = make('div', 'profile-scroll__copy');
   workCopy.append(make('p', 'profile-scroll__eyebrow', text(workData, 'work-kicker')));
-  const workTitle = make('h2', 'profile-scroll__title profile-scroll__title--verbs', text(workData, 'work-title'));
+  const workTitle = make('h2', 'profile-scroll__title profile-scroll__title--verbs', headline(text(workData, 'work-title')));
   workTitle.id = `profile-title-${workData.id}`;
   workCopy.append(workTitle, make('p', 'profile-scroll__body', text(workData, 'work-copy')));
   workGrid.append(workCopy);
@@ -110,7 +111,7 @@
   const final = makeSection(finalData, 'contact');
   const finalInner = make('div', 'profile-scroll__contact-inner');
   finalInner.append(make('p', 'profile-scroll__eyebrow', text(finalData, 'final-kicker')));
-  const finalTitle = make('h2', 'profile-scroll__title profile-scroll__title--contact', text(finalData, 'final-title'));
+  const finalTitle = make('h2', 'profile-scroll__title profile-scroll__title--contact', headline(text(finalData, 'final-title')));
   finalTitle.id = `profile-title-${finalData.id}`;
   finalInner.append(finalTitle, make('p', 'profile-scroll__body', text(finalData, 'final-copy')));
   const links = make('nav', 'profile-scroll__links');
@@ -149,8 +150,25 @@
       if (bounds.top < window.innerHeight * .88 && bounds.bottom > 0) section.classList.add('is-visible');
     });
   };
+  let scrollFrame = 0;
+  const updateScrollEffects = () => {
+    scrollFrame = 0;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const viewport = window.innerHeight || 1;
+    document.querySelectorAll('[data-profile-section]').forEach((section) => {
+      const bounds = section.getBoundingClientRect();
+      const center = bounds.top + bounds.height / 2;
+      const progress = Math.max(-1, Math.min(1, (center - viewport / 2) / viewport));
+      section.style.setProperty('--section-progress', progress.toFixed(3));
+    });
+  };
+  const requestScrollEffects = () => {
+    if (!scrollFrame) scrollFrame = window.requestAnimationFrame(updateScrollEffects);
+  };
   window.addEventListener('scroll', revealVisible, { passive: true });
+  window.addEventListener('scroll', requestScrollEffects, { passive: true });
+  window.addEventListener('resize', requestScrollEffects, { passive: true });
   window.addEventListener('portfolio:unlocked', revealVisible);
   new MutationObserver(revealVisible).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-  window.requestAnimationFrame(revealVisible);
+  window.requestAnimationFrame(() => { revealVisible(); updateScrollEffects(); });
 })();
