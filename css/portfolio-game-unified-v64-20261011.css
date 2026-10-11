@@ -1,0 +1,251 @@
+/* Unified game theme: deep graphite, warm white, persimmon orange. */
+body.portfolio-locked {
+  --game-paper: #30302e;
+  --game-paper-deep: #30302e;
+  --game-ink: #f5f0e7;
+  --game-muted: rgba(245, 240, 231, .64);
+  --game-accent: #d9784a;
+  --game-line: rgba(245, 240, 231, .18);
+  background: var(--game-paper);
+  color: var(--game-ink);
+}
+
+body.portfolio-locked .game-shell {
+  background:
+    linear-gradient(90deg, transparent calc(50% - .5px), rgba(245, 240, 231, .035) 50%, transparent calc(50% + .5px)),
+    var(--game-paper);
+  color: var(--game-ink);
+}
+
+body.portfolio-locked .game-shell::before {
+  background:
+    radial-gradient(circle at 12% 14%, rgba(217, 120, 74, .08), transparent 28%),
+    linear-gradient(180deg, transparent 72%, rgba(245, 240, 231, .025));
+}
+
+body.portfolio-locked .game-frame {
+  border-color: var(--game-line);
+  background: var(--game-paper);
+  box-shadow: 0 22px 64px rgba(48, 48, 46, .38);
+}
+
+body.portfolio-locked .game-frame::after {
+  border-color: rgba(245, 240, 231, .08);
+}
+
+body.portfolio-locked .game-topbar {
+  border-bottom-color: var(--game-line);
+  background: rgba(48, 48, 46, .92);
+  color: var(--game-muted);
+  backdrop-filter: blur(18px);
+}
+
+body.portfolio-locked .game-brand,
+body.portfolio-locked .game-topbar a {
+  color: var(--game-ink);
+}
+
+body.portfolio-locked .game-brand::before {
+  background: var(--game-accent);
+}
+
+body.portfolio-locked .game-intro,
+body.portfolio-locked .game-complete {
+  background:
+    linear-gradient(90deg, transparent calc(50% - .5px), rgba(245, 240, 231, .045) 50%, transparent calc(50% + .5px)),
+    var(--game-paper);
+}
+
+body.portfolio-locked .game-intro::after,
+body.portfolio-locked .game-complete::after {
+  background: radial-gradient(circle at 78% 28%, rgba(217, 120, 74, .075), transparent 26%);
+}
+
+body.portfolio-locked .game-intro h1,
+body.portfolio-locked .game-complete h2,
+body.portfolio-locked .mission-panel h2 {
+  color: var(--game-ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 650;
+}
+
+body.portfolio-locked .game-intro h1 {
+  letter-spacing: -.07em;
+}
+
+body.portfolio-locked .game-intro h1 em,
+body.portfolio-locked .game-complete h2 em,
+body.portfolio-locked .game-kicker,
+body.portfolio-locked .business-label::before,
+body.portfolio-locked .tech-label::before,
+body.portfolio-locked .control-plus {
+  color: var(--game-accent);
+}
+
+body.portfolio-locked .game-intro > p:not(.game-kicker, .game-note),
+body.portfolio-locked .incident-card small,
+body.portfolio-locked .control-preview small,
+body.portfolio-locked .game-note,
+body.portfolio-locked .hand-label,
+body.portfolio-locked .mission-panel > p:not(.game-kicker),
+body.portfolio-locked .part-slot,
+body.portfolio-locked .active-controls,
+body.portfolio-locked .touch-pad > span,
+body.portfolio-locked .game-status,
+body.portfolio-locked .pixel-credit,
+body.portfolio-locked .pixel-credit a {
+  color: var(--game-muted);
+}
+
+body.portfolio-locked .incident-card {
+  border-block-color: var(--game-line);
+  background: rgba(245, 240, 231, .025);
+}
+
+body.portfolio-locked .incident-card strong {
+  color: var(--game-ink);
+  font-family: inherit;
+}
+
+body.portfolio-locked kbd,
+body.portfolio-locked .touch-pad button {
+  border-color: rgba(245, 240, 231, .3);
+  background: rgba(245, 240, 231, .07);
+  color: var(--game-ink);
+  box-shadow: 0 3px 0 rgba(245, 240, 231, .06);
+}
+
+body.portfolio-locked .game-button {
+  border-color: var(--game-accent);
+  background: var(--game-accent);
+  color: var(--game-ink);
+  box-shadow: 5px 5px 0 rgba(245, 240, 231, .12);
+}
+
+body.portfolio-locked .game-button:hover,
+body.portfolio-locked .game-button:focus-visible {
+  border-color: var(--game-ink);
+  background: var(--game-ink);
+  color: var(--game-paper);
+  box-shadow: 2px 2px 0 rgba(217, 120, 74, .5);
+}
+
+body.portfolio-locked .game-play {
+  background:
+    linear-gradient(90deg, transparent calc(50% - .5px), rgba(245, 240, 231, .035) 50%, transparent calc(50% + .5px)),
+    var(--game-paper);
+}
+
+body.portfolio-locked .mission-panel {
+  border-left-color: var(--game-accent);
+}
+
+body.portfolio-locked .part-slot,
+body.portfolio-locked .game-play[data-mode="sokoban"] .part-slot,
+body.portfolio-locked .game-play[data-mode="lasermaze"] .part-slot,
+body.portfolio-locked .game-play[data-mode="fusion"] .part-slot {
+  border-color: var(--game-line);
+  background: transparent;
+  color: var(--game-muted);
+}
+
+body.portfolio-locked .part-slot.is-current,
+body.portfolio-locked .part-slot.collected,
+body.portfolio-locked .game-play[data-mode] .part-slot.is-current,
+body.portfolio-locked .game-play[data-mode] .part-slot.collected {
+  border-color: var(--game-accent);
+  background: rgba(217, 120, 74, .08);
+  color: var(--game-ink);
+}
+
+body.portfolio-locked .part-slot b,
+body.portfolio-locked .part-slot.collected b,
+body.portfolio-locked .game-play[data-mode] .part-slot.collected b {
+  color: var(--game-accent);
+}
+
+body.portfolio-locked .reset-level {
+  border-bottom-color: var(--game-line);
+  color: var(--game-muted);
+}
+
+body.portfolio-locked .reset-level:hover,
+body.portfolio-locked .reset-level:focus-visible {
+  border-color: var(--game-accent);
+  color: var(--game-accent);
+}
+
+body.portfolio-locked .arena-column {
+  border-color: var(--game-line);
+  background: rgba(245, 240, 231, .035);
+  box-shadow: 7px 8px 0 rgba(245, 240, 231, .055);
+}
+
+body.portfolio-locked .game-arena,
+body.portfolio-locked .game-arena[data-mode="sokoban"],
+body.portfolio-locked .game-arena[data-mode="lasermaze"],
+body.portfolio-locked .game-arena[data-mode="fusion"] {
+  border-color: var(--game-ink);
+  background-color: var(--game-paper);
+  box-shadow: 5px 5px 0 rgba(245, 240, 231, .11), inset 0 0 50px rgba(48, 48, 46, .4);
+}
+
+body.portfolio-locked .arena-grid {
+  background-image:
+    linear-gradient(rgba(245, 240, 231, .09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 240, 231, .09) 1px, transparent 1px);
+}
+
+body.portfolio-locked .game-arena[data-mode] .terrain-tile,
+body.portfolio-locked .game-arena[data-mode] .workshop-wall {
+  filter: grayscale(.62) sepia(.12) saturate(.62) brightness(.82);
+}
+
+body.portfolio-locked .game-arena[data-mode="lasermaze"] .laser-path polyline,
+body.portfolio-locked .game-arena[data-mode="fusion"] .laser-path polyline {
+  stroke: var(--game-accent);
+  filter: drop-shadow(0 0 .08px var(--game-accent)) drop-shadow(0 0 .16px var(--game-accent));
+}
+
+body.portfolio-locked .game-arena[data-mode="lasermaze"] .laser-mirror.is-selected > span,
+body.portfolio-locked .game-arena[data-mode="lasermaze"] .laser-mirror.is-beam-hit > span {
+  border-color: var(--game-accent);
+  box-shadow: 0 0 14px rgba(217, 120, 74, .7);
+}
+
+body.portfolio-locked .game-status {
+  border-top-color: var(--game-line);
+  font-family: inherit;
+  font-style: normal;
+}
+
+body.portfolio-locked .unlock-grid {
+  border-block-color: var(--game-line);
+}
+
+body.portfolio-locked .unlock-grid > div {
+  border-color: var(--game-line);
+  background: rgba(245, 240, 231, .025);
+}
+
+body.portfolio-locked .unlock-grid span {
+  color: var(--game-accent);
+}
+
+body.portfolio-locked .unlock-grid strong {
+  color: var(--game-ink);
+  font-family: inherit;
+}
+
+@media (max-width: 600px) {
+  body.portfolio-locked .arena-column {
+    box-shadow: 4px 5px 0 rgba(245, 240, 231, .055);
+  }
+
+  body.portfolio-locked .game-arena,
+  body.portfolio-locked .game-arena[data-mode="sokoban"],
+  body.portfolio-locked .game-arena[data-mode="lasermaze"],
+  body.portfolio-locked .game-arena[data-mode="fusion"] {
+    box-shadow: 3px 3px 0 rgba(245, 240, 231, .11), inset 0 0 38px rgba(48, 48, 46, .4);
+  }
+}
