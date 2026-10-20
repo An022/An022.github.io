@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="/css/story-deck-full-v53-20260928.css">
   <link rel="stylesheet" href="/css/portfolio-game-storybook-v55-20261004.css">
   <link rel="stylesheet" href="/css/portfolio-game-unified-v64-20261011.css">
-  <link rel="stylesheet" href="/css/profile-career-v66-20261020.css">
+  <link rel="stylesheet" href="/css/profile-career-v67-20261020.css">
 </head>
 <body class="portfolio-locked">
   <a class="skip" id="accessSkip" href="#home">Skip game and view portfolio</a>
@@ -105,10 +105,19 @@
       <a href="https://github.com/An022" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a class="applybook-header-link" href="https://applybook.applybook-app.workers.dev/" target="_blank" rel="noopener noreferrer">Applybook <span data-applybook-suffix>(app I built)</span></a>
     </nav>
-    <div class="story-language-switch" role="group" aria-label="Language">
-      <button type="button" data-story-language="en" aria-label="English">EN</button>
-      <button type="button" data-story-language="zh-Hant" aria-label="繁體中文">繁</button>
-      <button type="button" data-story-language="zh-Hans" aria-label="简体中文">简</button>
+    <div class="story-language-picker" data-language-picker>
+      <button class="story-language-trigger" type="button" data-language-trigger aria-label="Choose language" aria-haspopup="menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 6h-3.1a15.7 15.7 0 0 0-1.4-3.4A8.1 8.1 0 0 1 18.9 8ZM12 4c.8 1 1.5 2.3 1.8 4h-3.6C10.5 6.3 11.2 5 12 4ZM4.3 14a8.2 8.2 0 0 1 0-4H8a16.5 16.5 0 0 0 0 4H4.3Zm.8 2h3.1a15.7 15.7 0 0 0 1.4 3.4A8.1 8.1 0 0 1 5.1 16ZM8.2 8H5.1a8.1 8.1 0 0 1 4.5-3.4A15.7 15.7 0 0 0 8.2 8Zm3.8 12c-.8-1-1.5-2.3-1.8-4h3.6c-.3 1.7-1 3-1.8 4Zm2.1-6H9.9a13.8 13.8 0 0 1 0-4h4.2a13.8 13.8 0 0 1 0 4Zm.3 5.4a15.7 15.7 0 0 0 1.4-3.4h3.1a8.1 8.1 0 0 1-4.5 3.4Zm1.6-5.4a16.5 16.5 0 0 0 0-4h3.7a8.2 8.2 0 0 1 0 4H16Z"/></svg>
+        <span data-current-language>EN</span>
+        <svg class="story-language-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5H7Z"/></svg>
+      </button>
+      <div class="story-language-menu" data-language-menu role="menu" hidden>
+        <button type="button" role="menuitemradio" data-story-language="en"><span>English</span><small>EN</small></button>
+        <button type="button" role="menuitemradio" data-story-language="zh-Hant"><span>繁體中文</span><small>繁</small></button>
+        <button type="button" role="menuitemradio" data-story-language="zh-Hans"><span>简体中文</span><small>简</small></button>
+        <button type="button" role="menuitemradio" data-story-language="ja"><span>日本語</span><small>JA</small></button>
+        <button type="button" role="menuitemradio" data-story-language="es"><span>Español</span><small>ES</small></button>
+      </div>
     </div>
   </header>
 
@@ -127,7 +136,7 @@
   </main>
   <script src="/js/portfolio-game-audit-room-v47-20260924.js"></script>
   <script src="/js/portfolio-storybook-v38-20260924.js"></script>
-  <script src="/js/profile-showcase-data-v56-20261011.js"></script>
-  <script src="/js/profile-career-v66-20261020.js"></script>
+  <script src="/js/profile-showcase-data-v67-20261020.js"></script>
+  <script src="/js/profile-career-v67-20261020.js"></script>
 </body>
 </html>
